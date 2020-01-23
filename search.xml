@@ -1,21 +1,526 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/01/23/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+    <title>转专业回忆</title>
+    <url>/2020/01/23/25-%E8%BD%AC%E4%B8%93%E4%B8%9A%E5%9B%9E%E5%BF%86/</url>
+    <content><![CDATA[<blockquote>
+<p>2018.5.15—2018.5.16</p>
+<p>为期两天的转专业考试终于结束了，心里的一块大石头终于落地了。</p>
+</blockquote>
+<a id="more"></a>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>先说说 5.15 的笔试。</p>
+<p>笔试考的是数据结构 B。一开始做感觉不是很难。不过中间做到一道简答题的第二小问：求一个森林 (含有三棵树) 的先序遍历，脑子一抽把原来的答案改掉了，改成了三棵子树同时进行先序遍历。森林如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/1.png" alt=""></p>
+<p>第一小问是转化成二叉树： </p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/2.png" alt=""></p>
+<p>第二小问就是求这个<strong>森林</strong>的<strong>先序遍历</strong>。本来想都没想写的：<strong>ADBEC</strong>。后来真的是脑子抽了，改成了 <strong>ABCDE</strong>。因为想起了之前做到的一道题，森林的层次遍历就是三棵子树同时进行遍历的，这里先序遍历我想当然以为也是这样。后来一直没改，考完上网查了一下，翻书又确认了一遍，发现错了。求森林的先序遍历就是求<strong>对应二叉树的先序遍历</strong>啊！怪我基础知识掌握的不扎实。大概扣了 2-4 分。</p>
+<p>还有一道选择题不确定：求高度为 2 的 5 阶 B - 树最少的关键字个数。一开始我是不会做的，后来就从” 最小 “出发。B - 树每个结点<strong>最少</strong>有 ceil[m/2]-1 个元素。但是这有一个前提！那就是<strong>除根和失败结点以外</strong>！我又想当然的以为根结点也是，结果就以为根结点是 2 个关键字，下面有三个子树，2<em>3+2=8 个。但是根结点时可以*</em>最少只有一个关键字*<em>的！所以答案应该是 1+2</em>2=5！又两分没了。</p>
+<p>其他感觉还行，比较难的知识点，比如：双向链表，稀疏矩阵，二叉平衡树的插入，B - 树的插入、删除，迪杰斯特拉算法，快排，构建最小堆，都没有考到。最后两个算法设计题，第一道是计算一棵二叉树中关键字等于 x 的结点个数。第二道是简单选择排序算法。</p>
+<p>计算一棵二叉树中关键字等于 x 的结点个数：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义二叉树的结构体和二叉树结点类型的结构体(题目给出的)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span> *<span class="title">left</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span> *<span class="title">right</span>;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">&#125;BTnode;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span> *<span class="title">root</span>;</span></span><br><span class="line">&#125;Btree;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// count在main主函数里初始化为0</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Count</span><span class="params">(Btree *t,<span class="keyword">int</span> *count,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t-&gt;root-&gt;data == x)&#123;</span><br><span class="line">        count += <span class="number">1</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">    Count(t-&gt;left,&amp;count,x);  <span class="comment">//因为把count定义为指针变量，传的是count的地址，所以要加&amp;</span></span><br><span class="line">    Count(t-&gt;right,&amp;count,x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>简单选择排序算法： </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//简单选择排序算法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SelectSort</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j,small,x;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; n;i ++)&#123;</span><br><span class="line">        small = i;</span><br><span class="line">        <span class="keyword">for</span>(j = i + <span class="number">1</span>;j &lt; n;j ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[small] &gt; a[j])&#123;</span><br><span class="line">                small = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(small != i)&#123;</span><br><span class="line">            x = a[i];</span><br><span class="line">            a[i] = a[small];</span><br><span class="line">            a[small] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>其他应该没什么了。简答题考了一个直接插入排序，给出每一趟的结果。我当时在纠结的是括号括排好序的部分，还是未排好序的部分。最后还是选择括后面未排好序的部分。第一遍做完大概还剩几十分钟，就检查。前前后后检查了三遍，到考试时间结束才交上去，想把握大一点。</p>
+<p>再来讲讲 <strong>5.16</strong> 的面试。</p>
+<p>面试分在第二组。前面都是 16 级大二转计科、软工的，然后是 17 级大一转软工、软工 (嵌入式) 的。之前有听学姐说面试会要 2 分钟的英文面试。所以一直在背。准备的不够充分，本来应该昨天 15 日就背下来的，结果到 16 日上午才把英文版的自我介绍写好。中午坐 D1 到仙林正好 13 点多一点，就去图书馆背了几遍英文自我介绍，就去计算机学科楼等面试签到了。记得学姐去年说大二面试顺序是按笔试成绩从高到低排的，所以看到自己面试是第二个，心里有点高兴吧，也算给自己一点鼓励：我可以的。第一个进去面试的同学也是管理学院的，信管的一个大佬。感觉进去时间挺长的，有 5-6 分钟，出来时他说没问什么，然后我带着准备的装了获奖证书以及荣誉证书的文件夹就进去了。</p>
+<p>进去之后，首先是说老师好。然后就说了一下自己带的文件夹里放的是一些获奖证书，一个女老师拿过去看了。然后最右边的老师问是不是上过他的课，对我有点印象。我说蹭过他带的数据结构重修班两节课，因为之前想问这个老师关于机器学习的东西，就顺便去蹭了。发现不同老师教的不一样，深度也不一样。冥冥中自有天意，谁知道面试我的会是这个老师。然后就开始提问了。自我介绍都没让我介绍，坐在中间的老师先是问我对计科有什么了解。我就说了一下计科对数学要求高，还有编程能力，以及阅读英文文献的能力，因为先进的技术从国外传到国内需要一个过程，想要赶上学习的潮流，就得有阅读英文文献的能力。然后，讲到数学，对我印象深刻的老师就问了我一道数学的问题：如何理解矩阵的秩？我想了一下，就说是行列式的值。老师说不对，然后给我解释了一下。我确实忘了线性代数了 (大一下学的) 所以这方面的知识还得自己慢慢补，因为机器学习里经常用到。然后坐在中间的老师又问我，为什么要从电子商务转来计科，电子商务不是很火吗？我说，我想做人工智能方面的研究。大一升大二暑假看了部美剧《西部世界》，讲的是人工智能，机器人的觉醒，然后发现很有意思。后来买了谭浩强的 C 语言，整个暑假把这本书从头到尾重学了一遍，课后习题代码都动手敲了一遍，然后感觉就来了。后面就一发不可收拾，大二上自学了 Python。现在也在学深度学习。然后老师又问了我大创的是什么级别，我说是校级重点。问了我指导老师是谁，我说是带我微机接口的老师，名字挂到了通院的另一个老师名字下面。老师说那应该转通工啊 (可能他以为我做的是通工方向的大创)，我马上解释，我做的是和计算机有关的，做的是情绪识别，利用深度学习。然后那个女老师就问我证书里面有个 “单科成绩优秀奖学金” 是什么？我说是和同学合作发了一篇论文，辅导员通过了我的申请。接着，对我印象深刻的老师就说以后转来计算机，跟着计算机学院的老师做人工智能的项目。我说好的好的，谢谢老师。然后就面试结束了。期间，对我印象深刻的那个老师和其他老师提到好几次我对计算机很感兴趣。感觉冥冥中自有天意吧。</p>
+<p>后来想想还好面试问的问题不难。之前准备的时候还在想 “<strong>面向对象</strong>” 是什么意思，发现不会解释。就是大概知道什么意思，但是就是说不上来。另外准备的其他一些面试会问到的题目没有问到。最怕问 “<strong>你最大的缺点是什么</strong>” 这个问题了。</p>
+<p>走出面试会议室的大门，我感觉一下子轻松了好多。想想自己从当初大二上决定转，中间又畏惧大三补的课，退缩了几次，再到后面铁了心要转计科，真的是很艰难啊。不过还好，确定想转计科之后，就无所畏惧了。大二寒假留在学校培训美赛的时候，白天做数模题目，晚上抽一两个小时自学数据结构，看书 + 看 ppt。寒假结束差不多全部看了一遍，大二上开学花了两三周又看了一遍。然后就跟着学校的正常教学进度学了。到四月中旬的时候，开始重新复习，加上刷题。再到五月，开始做考研的数据结构题目。感觉自己为了转专业真的是投入了好多的精力。想想自己进入大学以来，没有哪一件事有准备转专业这么全力以赴了。最近的一件估计就是高考了。这种 all in 的感觉让我仿佛回到了高考。这样的感觉真不错！</p>
+<p>期待好消息，晚安！</p>
+<p>2018.5.17  0:36</p>
+<p><u>本文于 2018 年 5 月 17 日首发于 <a href="https://blog.csdn.net/Wonz5130/article/details/80344738" target="_blank" rel="noopener">CSDN</a>。</u></p>
 ]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>NJUPT</tag>
+        <tag>转专业</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello Wonz</title>
+    <url>/2020/01/23/0-Hello%20Wonz/</url>
+    <content><![CDATA[<blockquote>
+<p>阮一峰大神曾经说过: 喜欢写 Blog 的人, 会经历 3 个阶段。</p>
+<p>第一阶段，刚接触 Blog，觉得很新鲜，试着选择一个免费空间来写。<br>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。<br>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>作为这里的第一篇博客，打算记录我与编程的一些重要事件。</p>
+<ul>
+<li>2018 年 1 月 28 日，有了 GitHub 账号，并且提交了第一个 contribution。</li>
+<li>2018 年 2 月 27 日，开始写第一篇博客。</li>
+<li>2018 年 7 月 7 日，转专业结果出了，成功转到计算机学院「计算机科学与技术」专业。</li>
+<li>2018 年 7 月，第一篇阅读量突破 1k 的博客诞生：<a href="https://blog.csdn.net/wonz5130/article/details/80465245" target="_blank" rel="noopener">求最小依赖集</a>。</li>
+<li>2018 年 7 月 27 日，有了自己的个人博客。</li>
+<li>2018 年 8 月 2 日，GitHub 有了第一个 star。</li>
+<li>2018 年 8 月 19 日，GitHub 有了第一个 follower。</li>
+<li>2018 年 9 月 1 日，搬来仙林了，终于要开始仙林的生活了，每一天都要加油！</li>
+<li>2018 年 10 月 19 日，GitHub 提交了第 1,000 个 Commits。</li>
+<li>2019 年 2 月 25 日，GitHub 加入第一个组织：<a href="https://github.com/NJUPTFreeExams" target="_blank" rel="noopener">NJUPTFreeExams</a>。</li>
+<li>2019 年 2 月 28 日，GitHub 第一个 star 数达两位数的项目：<a href="https://github.com/Wonz5130/NJUPT-Yellow-Pages" target="_blank" rel="noopener">NJUPT-Yellow-Pages</a></li>
+<li>2019 年 3 月 8 日，CSDN 粉丝数突破两位数，达到 100 个。</li>
+<li>未完待续······</li>
+</ul>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一篇想了很久的推送</title>
+    <url>/2019/03/30/299-%E4%B8%80%E7%AF%87%E6%83%B3%E4%BA%86%E5%BE%88%E4%B9%85%E7%9A%84%E6%8E%A8%E9%80%81/</url>
+    <content><![CDATA[<blockquote>
+<p>1</p>
+</blockquote>
+<p>当初一起转专业来计算机学院的一个同学，最近竟然和我说不想读计算机的研究生。这让我感到很诧异，当初转专业确实感受到了这位同学对计算机的热爱。但是，最后做出这个决定确实让我没有想到。不过他说的有一点很有道理，“竞赛算法和工程算法”区别是很大的。也许是被 bug 折腾得失去了当初的热爱，也许是看到了计算机这条路过于火爆，对未来充满了担忧。我不去猜测他人的想法，但是我却想到了其他一些事情。</p>
+<blockquote>
+<p>2</p>
+</blockquote>
+<p>就像上面那位同学一样，想起以前认识的一位巨佬，几个月前也发出了 <code>“码生无望”</code> 的感叹。这位巨佬一直是我在计算机这条路前进的动力，当初踏入算法这条路多亏了她的帮助，在此表示深深的感谢。我不知道，到底是什么造成了陆陆续续的计算机专业的人选择了转行。我也不知道自己能在计算机这条路走多远。但是我知道，起码现在我还热爱计算机。</p>
+<blockquote>
+<p>3</p>
+</blockquote>
+<p>稍微关注 <code>计算机考研</code> 的人都知道，2019 年计算机考研大热，那些跨考的、在职考研的，占据了很大一部分比例。是否，计算机真的那么吸引人？是的！比起其他行业，计算机行业的薪资确实高很多。但是带来的弊端也很明显，那就是累！最近 GitHub 上一个 <code>996.ICU</code> 项目很火，列举了当前社会上一些实行 <code>996</code> 工作制的公司（即早上 9 点上班，晚上 9 点下班，一周工作 6 天）太多人只看到了计算机光鲜的外表，却不曾发现那些不为人知的辛苦的暗。</p>
+<blockquote>
+<p>4</p>
+</blockquote>
+<p>昨天，被身边一位同学冷嘲热讽怼得好难过。放张截图你们自己感受一下。</p>
+<p>真的烦，不止说一遍。我知道自己菜，每次身边有人叫我 <code>大佬</code> ，叫我 <code>舟神</code> ，我都会很惶恐，因为我知道，他们看到的其实都是假象。想起自己原来在管理学院，看到爱学习的同学真的不多，优秀的人也不多。但是 <code>15级</code> 还是有一些学长学姐，是真的很优秀的，我也一直以他们为前进的动力。来到仙林之后，才知道原来自己就是一只 <code>井底之蛙</code> ，有绩点大佬，那种理工科 GPA4.2+ 的大佬不少，虽然有一些是只会学习（我一直不希望自己成为这样的人）但是别人只学习还是值得让人尊敬的；有竞赛大佬，虽然有些绩点不高甚至挂科，但是我依然觉得他们是我值得尊敬的人，那种一心投入竞赛的心情我是可以理解的，那是真的热爱，比如 ACM 校队大佬；还有学习竞赛齐头并进的大佬，这种是真的强，我认识的就有好几个，强哥就是其一，也是我一直仰望的存在，但是和他交流真的一点压力都没有。</p>
+<p>这还只是仙林校区，最近自己的圈子也扩大了一些，认识了一些 985 名校的学长学姐甚至同学学弟学妹，给我感受只有：我好菜啊。那么菜，还不赶紧努力？？？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">我接受身边人说我菜  说我垃圾  因为这是事实</span><br><span class="line">但是不能否定我想考 985 研究生的决心</span><br><span class="line">我从来都是对自己要求很高的人</span><br><span class="line">经过近三年的认知</span><br><span class="line">我深知平台的重要性</span><br><span class="line">总之我就是想去 985 读研究生</span><br><span class="line">高考是这样</span><br><span class="line">大二确定了目标院校至今一直没改变  仍然是这样</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>5</p>
+</blockquote>
+<p>最近接连收到学长学姐考上研究生的好消息。两位直系学长双双考上了 985 计算机的研究生，而且成绩还都很高。真心替他们感到高兴，所有的努力都是值得的。希望明年的自己，也能像他们一样，以好消息收尾。</p>
+<p>的确，有时选择比努力更重要。我深知这个道理。但是如果不敢于尝试，那谈什么未来？你可以说我头铁，当你什么时候心中有梦校之后，就是那种拼了命也想去的地方时，自然就会懂这种感觉了。</p>
+<blockquote>
+<p>6</p>
+</blockquote>
+<p>不过，最近两位同学也给自己敲响了警钟，既然选择考 985 研究生，那么该付出的努力自然要比一般人要多得多。确实该一心一意专心考研了。博客、GitHub、比赛该停停了。在此之前大概有两三位同学找我做数模比赛，我都推掉了。今天也正式把 GitHub 状态改成了 <code>CS-kaoyan</code> ，谨以此纪念陪伴了我i一年多的 GitHub 。</p>
+<p>虽然考研归考研，但是我并不想自己生活中只有考研，所以该跑的步还是会去跑，偶尔也会看部电影放松一下，偶尔也会写篇推送记记杂七杂八的事情。</p>
+<blockquote>
+<p>7</p>
+</blockquote>
+<p>今天是学校毕业信息采集的日子，要拍照片。借了同学的白衬衫，才意识到原来时间过得这么快。是该抽个时间回三牌楼看看 15 级的学长学姐们了，再不约就很难有机会了。想他们。</p>
+<blockquote>
+<p>8</p>
+</blockquote>
+<p>排队拍照的时候刷到了曹君的新推送。真是越来越喜欢曹君的文字，原来理科生的文字也能这么让人喜欢，第一次看就喜欢上了。那种随性的感觉真好，是我羡慕的。</p>
+<blockquote>
+<p>9</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">抓住三月的尾巴</span><br><span class="line">想说一声</span><br><span class="line">今天也要加油鸭</span><br><span class="line">你的征途是星辰大海</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>计算机</tag>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2019 年 2 月小记</title>
+    <url>/2019/02/28/277-2019-%E5%B9%B4-2-%E6%9C%88%E5%B0%8F%E8%AE%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>2019 年 2 月感想。</p>
+</blockquote>
+<a id="more"></a>
+
+<blockquote>
+<p>写在前面</p>
+</blockquote>
+<p>开学快两周了。感想有点多。</p>
+<blockquote>
+<p>变</p>
+</blockquote>
+<p>感觉这学期身边同学都变了好多。有些同学为了保研，真得太拼了，疯狂参加比赛，疯狂重修刷绩点。我觉得比赛的意义，应该是体验，而不是为了保研。真正优秀的人呀，才不会在意这些比赛获奖。</p>
+<p>有遗憾，基本上我是保不了研。</p>
+<p>但是不后悔，我相信考研能够让我去不比保研差的平台。</p>
+<blockquote>
+<p>不变</p>
+</blockquote>
+<p>寒假搜集了好多考研相关的信息和资源，2019.2.18 开学第一天，正式开始了考研复习。</p>
+<p>很喜欢自己的节奏与复习规划。</p>
+<p>唯一不满意的地方就是看书太慢。</p>
+<p>希望能慢慢提高效率吧。</p>
+<blockquote>
+<p>一些小确幸</p>
+</blockquote>
+<ul>
+<li>2019.2.25：GitHub 加入了第一个 <code>organization</code> 。感谢 <code>果汁</code> 学长带我混。</li>
+<li>2019.2.24：源于第一周的一个灵感，于是在周末创了个 GitHub 仓库动手做了起来，截止到 2019.2.28 已经有了 12 个 star。程序员生涯中第一个 <code>两位数</code> 的项目。</li>
+<li>期初还担心会和在考研教室和我坐一排的大四情侣产生座位冲突，第一周某一天意外地发现他们真的太好说话了，瞬间路转粉。</li>
+<li>我知道的几个学长学姐考研初试都过了，真心替他们感到高兴。</li>
+</ul>
+<blockquote>
+<p>写在后面</p>
+</blockquote>
+<p>再见，2 月。</p>
+<p>你好，3 月。</p>
+<p>冲鸭！</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>感想</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>写给计算机学院的同学们</title>
+    <url>/2019/01/31/250-%E5%86%99%E7%BB%99%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E9%99%A2%E7%9A%84%E5%90%8C%E5%AD%A6%E4%BB%AC/</url>
+    <content><![CDATA[<blockquote>
+<p>半年前，我写过一篇微信推送，给想走计算机这条路的学弟学妹们一些自己的建议。</p>
+<p>半年后，真正在计算机学院待了一学期之后，我对计算机的认知又有了新的看法。</p>
+<p>于是，想重新写一篇博客，想尽我所能地让学弟学妹们少走点歪路吧。</p>
+<p><img src="250-%E5%86%99%E7%BB%99%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E9%99%A2%E7%9A%84%E5%90%8C%E5%AD%A6%E4%BB%AC%5C1.jpg" alt=""></p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="To-students-at-School-of-Computer-Science"><a href="#To-students-at-School-of-Computer-Science" class="headerlink" title="To students at School of Computer Science:"></a>To students at School of Computer Science:</h2><h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
+<li><p>写在前面</p>
+</li>
+<li><p>正文开始</p>
+<ul>
+<li>大一、大二</li>
+<li>大三</li>
+<li>学习</li>
+<li>竞赛</li>
+<li>科研</li>
+<li>出国</li>
+<li>考研</li>
+<li>考证</li>
+</ul>
+</li>
+<li><p>补坑</p>
+</li>
+<li><p>致谢</p>
+</li>
+</ul>
+<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>提笔，思绪就回到了一年半前。想起了自己大学进来之后一路摸索，兜兜转转，花了一年的时间终于找到了自己真正喜欢的东西，那就是计算机！</p>
+<p>本着一心给学弟学妹贡献干货的初衷，只想学弟学妹能够少走点歪路，变得越来越优秀，肯定要超过我啊。</p>
+<p>本博客只是根据自己的个人经验，以及学长学姐们给我的建议，自己写的一些小指导。</p>
+<p><strong>记住：</strong>计算机不等于编程，计算机 &gt;&gt; 编程。路是自己走的，适合自己的才是最好的。</p>
+<p><strong>注意：</strong>有些坑，我可以告诉你们，但是有些坑还是要自己亲自去踩一遍的，至于原因嘛，卖个关子。</p>
+<h3 id="正文开始"><a href="#正文开始" class="headerlink" title="正文开始"></a>正文开始</h3><p>三条主线，会有交叉。</p>
+<ul>
+<li><p><strong>时间线：</strong>大一、大二、大三、大四</p>
+</li>
+<li><p><strong>方向线：</strong>学习、竞赛、科研</p>
+</li>
+<li><p><strong>规划线：</strong>国内读研、工作、出国</p>
+</li>
+</ul>
+<h5 id="大一、大二"><a href="#大一、大二" class="headerlink" title="大一、大二"></a>大一、大二</h5><p>学习的重要性就不说了，<code>GPA</code> 真的是个好东西，有个保研的学长告诉我，本科阶段，刷 <code>GPA</code> 比竞赛拿奖容易太多了。事实上，我觉得也是这样。</p>
+<p>大一大二还是可以参加点比赛的，不过小川同学的建议是，竞赛贵在精，不在多。含金量高的竞赛就那么几个，<code>数模</code> 、<code>ACM</code> 、<code>电赛</code> 、<code>挑战杯</code> 等等，其他一些比赛，站在功利点的角度，其实真的没什么意义，你和外校的同学竞争的时候，提起一些校内甚至院内的比赛，他们可能听都没听过。但是，你一说，<code>数模</code> 啊，<code>ACM</code> 啊，他们就知道了。<code>数模</code> 可以参加，但是我觉得 <code>ACM</code> 其实更偏向于读计算机专业的学生参加。<code>算法</code> 和 <code>数据结构</code> ，不管是找工作，还是考研复试上机，都是要考的。但是，<code>ACM</code> 是很累的，非常非常累！没有寒暑假，还会占据平时的放松时间，毕竟每周都要训练几十小时，这可不是开玩笑的。但是我可以郑重地告诉你，坚持下来，肯定收获很大，不说能不能拿个奖牌，单说 <code>算法</code> 这方面，就可以碾压很多人了。</p>
+<p>另外，如果你接触了 <code>ACM</code> 之后，发现没有很大的兴趣，也没事。你可以选择 <code>做项目</code> ，有个学长就是在 <code>ACM 校队</code> 呆了之后，发现自己对做项目更有兴趣，于是转了方向，后来在 <code>微软</code> 、<code>阿里云</code> 都实习过。这里就要提到<code>STITP</code> 了，虽说有些学长说，国家级的才有点含金量，省级的有些都没什么用，更别说校级了。这里，我想说的是，别那么功利性，项目做出来，收获肯定有的。导师方面也要多咨询，有些老师，就算是校级的项目，都能出三四个专利。我的 <code>STITP</code> 只有校级重点的评级，但是我一点都不难过，当时放弃 <code>数模</code> ，选择 <code>做大创</code> ，就想好了，不管什么评级，都要好好做。算是为自己增加一个项目经验。毕竟，学计算机的，大学四年，连个项目都没做出来过，说出来真的会被人笑话。我也想 <code>GitHub</code> 上多捞点 <code>Star</code> 啊！</p>
+<h5 id="大三"><a href="#大三" class="headerlink" title="大三"></a>大三</h5><p>准备就业的话，大三就要开始 <code>找实习</code> 了。暑假期间肯定要申请到一份实习，有实习能大大降低简历被刷的概率。一般计算机秋招在暑假刚结束的 8 月末 9 月初开始。</p>
+<p><strong>实习面试内容：</strong></p>
+<p>算法 + 数据结构 + 数据库 + 计算机网络 + 操作系统 + 项目经历 + 对应岗位技术需求</p>
+<p><strong>实习必备：</strong></p>
+<p>牛客网 (用过的都知道好，去了阿里的学长的实习内推就是从这里投的)</p>
+<p>LeetCode</p>
+<p>实习僧 (不那么大的公司)</p>
+<p><strong>实习准备书：</strong></p>
+<p>《剑指 Offer》《编程之美》</p>
+<h5 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h5><p>前面也说了 <code>GPA</code> 很重要。但是我这里想说的是，大学只学习真的是不够的。可能，你能刷到 4.5+ 的恐怖 <code>GPA</code>，但是是否真的掌握了呢。不过一般 GPA 到了这种地步的，估计老师没讲过的他自己也课后理解会了。但是你要是大学四年只学习，真的是万万不可取的。稍微了解了点就知道了，只学习的，在考研复试，或者保研面试，其实很容易暴露出问题。毕竟大学考试什么样子，大家心里也都清楚 (除了几所顶尖的)。分数考得高，并不代表你真的掌握了。</p>
+<p>高中刷了三年的题目，最后发现还是不会考试。进入大学之后，我就下定决心，不想再做只学习的人。如果只学习，那和再读四年高中有什么区别。我想要的是真正学到实质性的知识。</p>
+<h5 id="竞赛"><a href="#竞赛" class="headerlink" title="竞赛"></a>竞赛</h5><p>除了上文提到的那几个含金量比较高的比赛，再推荐几个校外的企业比赛，感兴趣就去参加吧，不要怕。<code>阿里天池</code> 、<code>腾讯广告算法大赛</code> 等等，不过这些一般都要 <code>机器学习</code> 、<code>深度学习</code> 的基础，这些是研究生学的了，感兴趣就提前自学好了（我就是因为兴趣，所以自学了 <code>吴恩达老师</code> 的深度学习课程，但是并没有学完。我认识的一个很厉害的学弟，大一就把 <code>吴恩达老师</code> 的 ML 和 DL 课程学完了，现在去 <code>南大匡亚明学院</code> 交换了，所以说啊，优秀的人，学校根本不是限制）。虽然本科生参加难度很大，但是说不定就能认识一些大佬呢。我混在 <code>腾讯广告算法大赛群</code> ，就发现了一个比研究生还厉害的 <code>中山大学</code> 本科生，ML、DL、NLP 都有涉猎而且都学得很好，真的强！</p>
+<p>竞赛获奖固然辉煌，但是你也要想到那些获奖的人背后付出的努力。我邮 <code>ACM 校队</code> 的那几个大佬，哪个不是投入了大量的精力和时间呢？2016 年校队队长 <code>CZY学长</code> 、2017 年校队队长 <code>ZZX学长</code> 、2018 年校队队长 <code>LYY同学</code> 、还有最佳女队 <code>LYT学姐</code>······稍微了解就知道他们付出的真的不是常人能想象的。但是坚持下来的真的都很厉害，有去 <code>Google</code> 的，有保研去 <code>清华</code> 的等等。</p>
+<h5 id="科研"><a href="#科研" class="headerlink" title="科研"></a>科研</h5><p>如果你对竞赛不是那么有兴趣，你可以试着接触点科研，联系个导师，跟着做个项目，说不定就有感觉了。本科阶段有老师带真的是好事！毕竟，读研期间就是做科研啊，大多数学校不发论文研究生不能毕业。</p>
+<h5 id="出国"><a href="#出国" class="headerlink" title="出国"></a>出国</h5><p>这方面我了解的不多。</p>
+<p>但是有老师、学长都说，出国读研比国内读研好。</p>
+<h5 id="考研"><a href="#考研" class="headerlink" title="考研"></a>考研</h5><p>计算机专业那几门课大概考研都会考：<code>计网</code> 、<code>计组</code> 、<code>操作系统</code> 、<code>数据结构</code> 和 <code>算法</code> 一定要好好学。<code>离散数学</code> 有些学校复试会考。反正如果你不清楚的话，只要是培养方案里标注的专业课，你要花比其他课都多的时间去学，准没错！至少要花和高数一样多的时间吧。考研有人说太早准备不好，有人说半年不够，我其实也不知道准确的时间。但是我知道，复习后期 (也就是大四 9 月以后) 考验的不是智商，是坚持。那时候，看到同学拿到 offer 了，你可能会开始焦虑，顶住压力。</p>
+<h5 id="考证"><a href="#考证" class="headerlink" title="考证"></a>考证</h5><p><code>全国 / 计算机等级考试</code> 这个怎么说呢，含金量不高，但是大家都考你不考又感觉不舒服，就很难受。再推荐个计算机专业的考证。<code>浙大 PAT</code> ，可以去了解一下，类似于 ACM，但是难度比 ACM 低，乙级 3 小时编程 5 道题，中文题目，甲级 3 小时编程 4 道题，全英文。顶级，不敢想，ACM 竞赛生玩的东西。这个含金量挺高的，也是一个学长告诉我的，有些学校考研复试上机成绩，可以直接拿 PAT 成绩替掉，有些实习面试的算法题，也可以直接拿 PAT 成绩替掉。</p>
+<p>另外，信息安全专业有一个 <code>CISSP</code> 的认证，很火爆。可以自己去了解一下，我知道的不多。</p>
+<h3 id="补坑"><a href="#补坑" class="headerlink" title="补坑"></a>补坑</h3><p>前面说到，有些坑还是要自己亲自去踩一遍的。这话其实，也是我大二第二学期的时候感受到的。发现真的很有道理。</p>
+<p>就比如，现在大学计算机专业学的第一门编程语言几乎都是 <code>C 语言</code> ，然后会接触 <code>C++</code> ，<code>Java</code> ，但是稍微了解就知道了，<code>Python</code> 已经把他们三个都超了。据我所知，苏州大学已经把 <code>Python</code> 作为大一计算机专业学的第一门编程语言了。我也是经一个哥哥指点，自学 <code>Python</code> ，然后发现，真的好用！当时就想，为什么要学这么麻烦的 <code>C 语言</code> 呢。前阵子我知道了，当然要学，你可以以后不用它，但是面向过程和面向对象的思想你还是要了解的。现在 <code>Python</code> 很火，但是谁能说，它不会没落？最近不是 <code>Julia</code> 语言也开始兴起了吗。</p>
+<p>当时大二上学期想转专业的时候，还只停在单纯地喜欢 <code>Python</code> 的层面，但是有个转专业的学长告诉我，光学 <code>Python</code> 是不够的，当时我不懂什么意思。大二下学期，我知道了！因为当时开了 <code>《微型计算机原理与接口技术》</code> 这门课，要写 <code>汇编语言</code> 程序。这个简直是比 <code>C 语言</code> 还繁琐的语言，很低级。但是我接触了之后，发现并没有想象中那么枯燥，能够深入了解一下计算机底层的东西，其实也很好。所以我就从当时上课连 <code>寻址方式</code> 都听不懂，到清明在家恶补狂刷了几遍 <code>西安交大</code> 的慕课，慢慢地有了感觉。后面老师布置的几个编程作业，我也都是自己编出来了。很感谢那时候的自己，枯燥的汇编语言也坚持下来了。我觉得，对计算机的执念大概就是那时候培养起来的吧。</p>
+<p>所以说啊，这些坑都要你自己亲自踩的。</p>
+<p>有个学姐在我大二升大三暑假的时候还和我聊到，她好心给学弟学妹一些指点，有些人听了很感激，有些人并不知道其中的辛酸。这些都是一点点摸索过来的经验啊。打个比方：我自己体验了物品 A 很不好用，找了很久问了很多人才知道 B 物品更好用，如果自己直接告诉别人 B 很好用，那个人没体验过 A 的难用和艰辛，根本谈不上感激吧？而且很有可能将来他用了 C 觉得推荐 B 物品的人没见过世面误导自己。所以说啊，有些坑自己去踩吧，总会有收获的，虽然会花点时间。</p>
+<p>另外，计算机学院的一些课，因为是从国外引入的，不先进。学校教的不与当前潮流接轨。学校课程安排，跟实践脱离，所以平时要多敲代码，遇到问题搜 <code>Google</code> 、<code>Stack Overflow</code> 。学计算机的，本科四年下来，代码量肯定得达到 <code>1w 行</code> ，只能多不能少！其实，这些很多都是大一、大二完成的，大三一些专业课敲代码比较少，但是你可以做项目来积累代码量。</p>
+<p>另外，<code>GitHub</code> 这个东西一定要自己去注册个账号，摸索一下怎么使用。对学计算机的同学是非常有用的！(这可是世界最大<del>同性交友网站</del>程序员的圣地啊！）所以有学长学姐带你真的很省事啊，我大二第一学期结束才知道 <code>GitHub</code> 这个东西，没有人告诉我，我都是自己摸索的，流过很多汗水，但是都值得啊！</p>
+<p><img src="250-%E5%86%99%E7%BB%99%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E9%99%A2%E7%9A%84%E5%90%8C%E5%AD%A6%E4%BB%AC%5C2.png" alt=""></p>
+<p>再补充一个，博客最好也有一个。我大二下学期才开始写博客，在 <code>CSDN</code> 上写的，后来限制太多，利用暑假时间，自己搭了一个 <code>个人博客</code> ，坚持 <code>输出</code> ，但是贵在精，不能一味追求数量。别小看写博客这个东西，你学会一个知识点是一件事，但是你写出来让别人看懂就是另一件事了。去了解了解 <code>「费曼学习法」</code> ，你就知道原因了。而且，博客也能作为加分点啊。我认识的去了 <code>阿里</code> 的学长，就是因为博客记录了一些 <code>智能算法</code> 的文章，面试官问了他博客上的这些智能算法，学长都答出来了，顺利拿到阿里 Offer。</p>
+<h3 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h3><ul>
+<li>去了阿里的「宋学长」</li>
+<li>同大二转专业的「郭学长」</li>
+<li>告诉我 PAT 的「尤鱼哥学长」</li>
+<li>给我很多帮助的「顾学长」</li>
+<li>不愿透露姓名的「某学姐」</li>
+<li>给我打开网络新世界大门的「陈学长」</li>
+<li>给我 ACM 希望的「刘学姐」</li>
+<li>告诉我 Python 是个好东西的「大哥哥」</li>
+<li>给我走 CS 路信心的「徐学长」</li>
+<li>管院爱好编程的「杨学长」</li>
+<li>从事 C# 开发的「于学姐、崔学长」</li>
+<li>给我考研一些指导的「张学长」</li>
+</ul>
+]]></content>
+      <categories>
+        <category>过来人的经验</category>
+      </categories>
+      <tags>
+        <tag>计算机</tag>
+        <tag>迷茫</tag>
+        <tag>CS</tag>
+        <tag>未来</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2018-2019 第一学期（大三上）复盘</title>
+    <url>/2019/01/31/249-2018-2019-%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%EF%BC%88%E5%A4%A7%E4%B8%89%E4%B8%8A%EF%BC%89%E5%AD%A6%E6%9C%9F%E5%A4%8D%E7%9B%98/</url>
+    <content><![CDATA[<blockquote>
+<p>2018-2019 第一学期</p>
+<p>这学期似乎过得更加地快了。</p>
+<p>有很多遗憾，也有很多欢乐。</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>我是个喜欢回顾过去的人。每次回顾过去，反思总结，都会发现还有很多提升的空间。</p>
+<p>转眼一下子自己就到了大三下了，过去五个学期了，其实现在看来每个学期都过得不是自己满意的，或许对自己要求太高了吧。</p>
+<h3 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h3><p>想说的话有很多，但是不知道从哪里开头。</p>
+<p>虽说这学期转专业到计算机学院了，要学的课程量是班上同学的两倍。但是我觉得这不是不好好学习的借口。正因为课是同学们的两倍，才更要抓紧时间，好好学习专业课，把自己欠下的补上。但是回顾这一学期，发现自己并没有做到。学期开始的时候立下的决定：离散数学、操作系统、算法、Linux 要好好学，结果学期快结束的时候，发现并没有真正学懂，最后期末考试都是应付的，都没有考好。</p>
+<p>这学期的生活作息也是非常不规律，基本晚上要 12:30 以后才能睡，晚点的话得到 1:30 以后。想起了这学期的几次大熬夜，每次都记忆犹新。第一次应该是 <code>算法与数据结构</code> 实验周吧。最后 bug 改到凌晨 3 点多，实在改不出来。最后一天上午继续改，结果还是没有成功，草草地给老师验收之后，老师并不满意。然后就是写实验周的报告了。清楚地记得 2018.11.11 凌晨买完要买的东西，就继续开始肝报告了。一直肝到凌晨 3 点多，睡了四个小时，7 点起床继续肝，又写了整整一天，到下午 5 点的样子才写完。接下来的一次熬夜就是 <code>计算机图形学</code> 的大作业实验报告了。本质上还是自己菜吧。前期紧跟老师的步伐，虽然 C++ 自学的一般，但是老师上课的部分勉强都能写出来代码。但是后期直接引入 <code>模型</code> ，发现自己真的跟不上了。越写越慌，最后直接崩掉了，大作业只做出来了基础要求，其他要求都没有做出来。清楚地记得那天 <code>图形学</code> 的报告写到了凌晨 5 点半，然后睡了两个多小时，8 点起床去 <code>金工实习</code> 了。白天做锤柄身子都是虚的，站都站不直。还有就是最后期末的时候，复习 <code>Linux</code> 的时候，被一个贝院的大佬感动，别人明明学得这么认真，结果期末复习还是熬夜复习。那天晚上复习 <code>Linux</code> 到凌晨 2 点多睡的。早上 7 点起床继续复习一会。最后就是美赛倒数第二天熬夜到 3 点睡，早上 7 点起。还有最后一天的通宵。为了自己一直在努力追求的东西而熬夜，才是有意义的。</p>
+<p> 不满意的地方那么多，但是还是有很多开心的事情的。遇到了一群人很好的新室友，相处很愉快，还会一起出去庆祝生日。新班级的同学都很热情，那个 <code>贰进制</code> 班群，经常会有欢声笑语。结识了很多优秀的大佬们，不仅成绩优秀，而且一点架子都没有，很好相处。尝试了人生中第一场 <code>半程马拉松</code> ，真的很激动，跑进 2’00 了。<code>博客</code> 坚持写了快一年了。<code>GitHub</code> 也陆续收获了 15 个 followers 和 1 个 star。</p>
+<p>写到这里，想到个好玩的事情。发现大佬们都喜欢互膜。我每次回宿舍，室友都会来一句”舟神“，我感觉这样倒是蛮好的 ，有利于同学之间的关系发展。期末复习周，我经常传复习资料到新班群，新同学也喜欢各种膜我。关键是，那些真正的大佬们，不知道从哪里得知我是大佬，也喜欢膜我。其实每次被大佬们膜，我心里都很惶恐，自己什么水平心里有数，感觉真的惶惶不可终日。不过和大佬们互膜确实蛮愉快的。</p>
+<p>五个学期都结束了，差不多未来方向也定了。说到底还是自己菜吧，保研应该是希望渺茫了。不过也不是很遗憾，因为我早就知道我最后会选择走考研这条路。有利有弊，虽然竞争是越来越激烈了。但是我真的需要经历考研，来沉淀一下自己所学的知识。</p>
+<p>所以，一往无前地冲吧。</p>
+<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><h5 id="1-计算机-≠-编程"><a href="#1-计算机-≠-编程" class="headerlink" title="1. 计算机 ≠ 编程"></a>1. 计算机 ≠ 编程</h5><p>准确的说，计算机 &gt;&gt; 编程。喜欢编程很好，我也喜欢编程，但是计算机远远不至于只有编程。那些计算机理论体系比代码更重要。</p>
+<p>但是时至今日，我自认为还是没有领悟计算机那些专业课的真正思想，因为我并不能把他们串在一起。只是跟着学校的培养方案，学了一些专业课，至于其中的种种联系，自己并不能发现。这点，我觉得也是目前大学里存在的一大问题吧。学生只会考试，真正能串在一起的学生很少，但是能串起来融会贯通的，无一不是真的对计算机很了解的人，在计算机这条路可以走很远的人了。</p>
+<p>不过，现阶段代码是基本功。虽然你以后可能不会永远写代码，会转管理岗。但是如果你现在想着我以后要做管理岗，因为这个就不怎么写代码，在我看来是颠倒是非的。现在就不写代码了，那你计算机学了有什么意义？</p>
+<p>前阵子去亲戚家拜年，我姐突然问我，你会写什么程序。我当时竟然只能说出我会写一点爬虫，其它什么都说不上来。顿时感觉，原来我才是那种什么都没学到的人。还有一年半，真正意义上课的时间只有大三第二学期了，我要利用这学期真的学点什么出来。不想以后再出现，别人问我你会写什么程序，结果我什么都答不上来或者只会说点很 low 的。真的好不喜欢这种感觉。</p>
+<h5 id="2-如果不是因为兴趣，那会很痛苦"><a href="#2-如果不是因为兴趣，那会很痛苦" class="headerlink" title="2. 如果不是因为兴趣，那会很痛苦"></a>2. 如果不是因为兴趣，那会很痛苦</h5><p>很感谢自己当初纠结了那么久，最后发现自己是真的对计算机感兴趣，然后选择的转专业。转过来虽然补课很累，但是一想到那是我喜欢的学院，喜欢的学科，喜欢的专业，就会有无尽的动力。相比之下，转过来之后，发现有很大一部分同学并不是对计算机感兴趣，而是既来之则安之。还有一些转专业过来的，当初都没有想好为什么转，就无脑地转，结果发现自己代码不会写，上课听不懂。我觉得这样真的不适合转专业。</p>
+<h5 id="3-内化知识，成为自己的东西"><a href="#3-内化知识，成为自己的东西" class="headerlink" title="3.内化知识，成为自己的东西"></a>3.内化知识，成为自己的东西</h5><p>说到底，大学考试真的很水，都是过关性考试。很多课都可以上课不听，期末突击一下应付过去。但是我始终觉得，这种方式是不利于自己的学习的。现在，我有了新的认识。大学里排那么多课，真的都用的到吗？也许你会说，总会在你未来的不经意间，就被用到了。是的，我之前也是这么想的，所以我每门课基本都会认真听，包括思修、近代史。但是，随着课程数量的增多，我发现自己的精力并没有那么多。一学期 20 门课，我真的没有那么多精力和时间，全部认真学。记得计算机学院的一个很好的老师对我说过有两条路走，一个是每门课都认真学，而且都要投入很多精力和时间，最后保研，另一条是选择性地，把精力和时间放在专业课上，多深入学一些，要学得比学校里教的还深，其他课大概水一水吧。之前一直不敢尝试第二条路，五学期过去了，发现自己真的没有学到真正实质性的东西。就在前几天，当我真正放下 GPA 这个东西的时候，我发现原来我之前过得这么累。苦苦追寻一直追寻不到的东西，明明就不适合自己。所以那天我做了一个之前从来没有想过的决定：下学期也就是大三第二学期，我想真正过一次属于自己的学期，学自己想学的，把知识学深，学透，变成真正属于自己的东西。</p>
+<h3 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h3><p>太多遗憾。</p>
+<p>但是重新来过，我可能还是会这么过吧。谁知道呢。</p>
+<p>沉溺于过去是小孩子的行为，我长大了，我想看到的是未来。</p>
+<p>我相信，我的未来会是星辰大海。</p>
+<p>所以，我要更加努力。</p>
+]]></content>
+      <categories>
+        <category>复盘</category>
+      </categories>
+      <tags>
+        <tag>复盘</tag>
+        <tag>总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Wonz の 2018 年度总结</title>
+    <url>/2018/12/31/233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<blockquote>
+<p>好像人长大了，就变得越来越喜欢回忆过去了。</p>
+<p>这是 <code>Wonz</code> 的 2018 年度总结~</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="一月-二月"><a href="#一月-二月" class="headerlink" title="一月~二月"></a>一月~二月</h3><p>什么都不懂但还是硬着头皮参加了美赛，体验了接近一个月的仙林生活，真的很喜欢这里了。</p>
+<p><img src="233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%5C4.jpg" alt=""></p>
+<h3 id="三月"><a href="#三月" class="headerlink" title="三月"></a>三月</h3><p>和大学遇到的关系超好的朋友去夫子庙过的元宵节，虽然是人挤人挤人。</p>
+<p>开始在 CSDN 写博客了。开始在 GitHub 上涂绿块。</p>
+<p><img src="233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%5C5.jpg" alt=""></p>
+<h3 id="四月"><a href="#四月" class="headerlink" title="四月"></a>四月</h3><p>趁着五一假期，刷了玄武湖。</p>
+<p>第一次 10 km。</p>
+<p><img src="233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%5C6.jpg" alt=""></p>
+<h3 id="五月"><a href="#五月" class="headerlink" title="五月"></a>五月</h3><p>得知姐姐怀孕了，立马晚上一个人跑去了德基，买了孕期护肤品给姐姐。</p>
+<p><img src="233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%5C7.jpg" alt=""></p>
+<h3 id="六月"><a href="#六月" class="headerlink" title="六月"></a>六月</h3><p>儿童节一时兴起，花了两三个小时，写了个迷宫小游戏送给朋友们作为儿童节礼物。</p>
+<p><img src="233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%5C8.jpg" alt=""></p>
+<h3 id="七月"><a href="#七月" class="headerlink" title="七月"></a>七月</h3><p>七月开心的事真的是太多啦！</p>
+<p>考完试和偶像、副团长、四爷、July、亦姐、D 约饭！每一顿都很开心！</p>
+<p>七月一个人去了花鸟岛，在花鸟岛闲逛的下午收到了转专业结果，可以说是很开心了！</p>
+<p>后来又一个人去了趟苏州散散心。</p>
+<p><img src="233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%5C10.jpg" alt=""></p>
+<h3 id="八月"><a href="#八月" class="headerlink" title="八月"></a>八月</h3><p>搭了个个人博客，开始折腾个人博客。</p>
+<p>每天基本都是刷算法、跑步、健身、写博客。很喜欢这样的生活。</p>
+<p>见了相识十三年的朋友。</p>
+<p>见了高中的同桌兼基友。</p>
+<p>收到了人生中第一张 <code>Coldplay</code> 的专辑。</p>
+<p><img src="233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%5C13.jpg" alt=""></p>
+<h3 id="九月"><a href="#九月" class="headerlink" title="九月"></a>九月</h3><p>终于搬来了仙林，新室友很好，新同学很好，新班级很好，一切对我来说都是新的开始。</p>
+<p><img src="233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%5C11.jpg" alt=""></p>
+<h3 id="十月"><a href="#十月" class="headerlink" title="十月"></a>十月</h3><p>见了从 1500 km 回来的老友。</p>
+<p>见了关系很好的高中同学。</p>
+<p>开始半马训练。</p>
+<p><img src="233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%5C14.jpg" alt=""></p>
+<h3 id="十一月"><a href="#十一月" class="headerlink" title="十一月"></a>十一月</h3><p>许久不过生日今年特别想过一次。</p>
+<p>遇见了生命中很重要的人。</p>
+<p>参加了人生第一场半程马拉松。</p>
+<p><img src="233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%5C12.jpg" alt=""></p>
+<h3 id="十二月"><a href="#十二月" class="headerlink" title="十二月"></a>十二月</h3><p>有生之年第一次看到流星，还是紫色的。这个月感觉自从看到流星之后运气都很好。</p>
+<p>收到了 1500 km 外老友寄来的信和新年礼物。</p>
+<p>最后一天和学弟学妹约了饭。</p>
+<p><img src="233-Wonz-%E3%81%AE-2018-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%5C15.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>回忆</tag>
+        <tag>年度总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>克里斯托弗，是他初恋的名字</title>
+    <url>/2018/11/03/196-%E5%85%8B%E9%87%8C%E6%96%AF%E6%89%98%E5%BC%97%EF%BC%8C%E6%98%AF%E4%BB%96%E5%88%9D%E6%81%8B%E7%9A%84%E5%90%8D%E5%AD%97/</url>
+    <content><![CDATA[<blockquote>
+<p>《模仿游戏》观后感</p>
+</blockquote>
+<a id="more"></a>
+
+<ul>
+<li>2018.11.2</li>
+<li>今日观影：《模仿游戏》</li>
+</ul>
+<h3 id="故事梗概"><a href="#故事梗概" class="headerlink" title="故事梗概"></a>故事梗概</h3><p>二战期间，盟军苦于德国的秘密系统” 英格玛 “无法破译，政府召集了一批民间数学家、逻辑学家进行秘密破解工作，图灵（本尼迪克特 · 康伯巴奇 Benedict Cumberbatch 饰）就是其中之一。计划刚开始图灵遭到了以休（马修 · 古迪 Matthew Goode）为首的组员和领导的排斥，幸好军情处部长孟席斯（马克 · 斯特朗 Mark Strong 饰）帮助他立项研究破译密码的机器，而图灵则变成了负责人，招收了新的成员琼（凯拉 · 奈特莉 Keira Knightley）开始了艰难的工作。琼很快就迷上了图灵，由于她的帮助所有组员空前的团结，并于两年后成功破解德军的密码。图灵一度与琼订婚，但实际上他隐瞒了一个秘密，因为这个秘密他也遭受了非人的待遇…… （摘自豆瓣）</p>
+<h3 id="自己感想"><a href="#自己感想" class="headerlink" title="自己感想"></a>自己感想</h3><ul>
+<li>情商比智商更重要</li>
+</ul>
+<p>不止一次提到，像我这种学计算机的，技术真的不是一切，毕竟 35 岁之后就会写不动代码了，大多都转产品了。社交真的很重要。不知道是不是巧合，今天 <code>离散数学</code> 课，老师提到读博的很多读完都不爱说话了，都是活在自己的世界里(害怕.jpg)。感觉还是要多交流。</p>
+<ul>
+<li>校园霸凌真的很严重</li>
+</ul>
+<p>影片里有提到，图灵年轻时经受过 <code>校园霸凌</code> ，因为别人觉得图灵比他们都聪明。</p>
+<ul>
+<li>爱情会让工作更有动力</li>
+</ul>
+<p>如题。（来自单身狗的呐喊！！！）</p>
+<h3 id="精彩语录"><a href="#精彩语录" class="headerlink" title="精彩语录"></a>精彩语录</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Sometimes it&#39;s the very people who no one images anything of who do the things no one can imagine.</span><br></pre></td></tr></table></figure>
+
+<h3 id="精彩截图"><a href="#精彩截图" class="headerlink" title="精彩截图"></a>精彩截图</h3><p><img src="196-%E5%85%8B%E9%87%8C%E6%96%AF%E6%89%98%E5%BC%97%EF%BC%8C%E6%98%AF%E4%BB%96%E5%88%9D%E6%81%8B%E7%9A%84%E5%90%8D%E5%AD%97%5C1.jpg" alt=""></p>
+<p><img src="196-%E5%85%8B%E9%87%8C%E6%96%AF%E6%89%98%E5%BC%97%EF%BC%8C%E6%98%AF%E4%BB%96%E5%88%9D%E6%81%8B%E7%9A%84%E5%90%8D%E5%AD%97%5C2.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>电影</category>
+      </categories>
+      <tags>
+        <tag>图灵</tag>
+        <tag>传记</tag>
+        <tag>二战</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>stormzhang 的知识星球第一期电子书读后感</title>
+    <url>/2018/10/15/177-stormzhang-%E7%9A%84%E7%9F%A5%E8%AF%86%E6%98%9F%E7%90%83%E7%AC%AC%E4%B8%80%E6%9C%9F%E7%94%B5%E5%AD%90%E4%B9%A6%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>自从加入 <code>stormzhang</code> 的知识星球之后，认知被一点点刷新。</p>
+<p>突然发现，自己太渺小了，懂得太少。</p>
+<p>这里主要分享自己的一些读后感，出于对版权的尊重，不会涉及作者的原话，尽量都用自己的理解说一下，如有对 <code>stormzhang</code> 造成侵权影响，我会删博客。</p>
+<p>本博客会持续更新，并且进行连载更新。</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
+<li><p>情商</p>
+</li>
+<li><p>认知</p>
+</li>
+<li><p>建议</p>
+</li>
+<li><p>未完待续······</p>
+</li>
+</ul>
+<h3 id="情商"><a href="#情商" class="headerlink" title="情商"></a>情商</h3><p>智商决定你能学会多少知识和技术，但是情商决定你能走多远。</p>
+<h3 id="认知"><a href="#认知" class="headerlink" title="认知"></a>认知</h3><p>「你想成为什么样的人，那就尽量去向他们靠近。」</p>
+<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><p>身为学计算机的学生，技术固然重要。但是 <code>stormzhang</code> 一再强调的一点是：技术不是一切。只重视技术的人，走不远。或者说，很难走远。因此，这就要求我们学会多元化发展自己，不断发现和发展自己的第二职业：写作、做饭、剪视频等。这些，其实都是你和其他程序员相比的独特的优势。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>stormzhang</tag>
+        <tag>读后感</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2018 暑假总结</title>
+    <url>/2018/09/02/160-2018-%E6%9A%91%E5%81%87%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<blockquote>
+<p>总结：过得太颓废了，很多计划都没完成。</p>
+<p>引以为戒！</p>
+</blockquote>
+<a id="more"></a>
+
+<ul>
+<li>健身：√</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/160-1.JPG" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/160-3.PNG" alt=""></p>
+<ul>
+<li>增重：×</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/160-2.JPG" alt=""></p>
+<ul>
+<li>跑步：半√</li>
+</ul>
+<p>期间膝盖疼，停了半个月。</p>
+<ul>
+<li>护肤：√</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/160-5.JPEG" alt=""></p>
+<ul>
+<li>个人博客：√</li>
+</ul>
+<p>PS：算是暑假做的最有意义的一件事了吧。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/160-6.png" alt=""></p>
+<ul>
+<li>GitHub：√</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/160-7.png" alt=""></p>
+<ul>
+<li>学 C++：半√</li>
+</ul>
+<p>只是跟着网课入门了一遍，写了些博客笔记，实际面向对象思想还不太理解，要一点点弄懂。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/160-8.png" alt=""></p>
+<ul>
+<li>电路分析基础 MOOC：√</li>
+</ul>
+<p>算是暑假花的时间比较多的一个吧，不过第一次互评作业交晚了几秒，就截止了，难过 ing</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/160-9.png" alt=""></p>
+<ul>
+<li>深度学习：×</li>
+</ul>
+<p>吴恩达老师的 DL 课只学了 3/10 左右。</p>
+<ul>
+<li>大创：×</li>
+</ul>
+<p>当初暑假放弃数模改做大创，就是为了想早点做出来，结果还是没有思路，怪自己花的时间少，一个暑假论文只看了几篇。</p>
+<ul>
+<li>算法：×</li>
+</ul>
+<p>学校那本教材只看了一点点。</p>
+<ul>
+<li>Python：×</li>
+</ul>
+<p>一直没有重新系统的学一遍。</p>
+<ul>
+<li>朱伟恋练有词：半×</li>
+</ul>
+<p>一开始每天都看，但是发现太花时间了，看了十单元左右，决定改学计算机内容了。</p>
+<ul>
+<li>计算机考证：×</li>
+</ul>
+<p>三级数据库只刷了 6 套，二级 Python 没有看，三级微机接口还没开始看。</p>
+<ul>
+<li>Linux：×</li>
+</ul>
+<p>买的阿里云还是没配置好，鸟哥的 Linux 也没学。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>心情</tag>
+      </tags>
   </entry>
 </search>
