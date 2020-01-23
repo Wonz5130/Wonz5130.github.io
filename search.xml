@@ -1,83 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>转专业回忆</title>
-    <url>/2020/01/23/25-%E8%BD%AC%E4%B8%93%E4%B8%9A%E5%9B%9E%E5%BF%86/</url>
-    <content><![CDATA[<blockquote>
-<p>2018.5.15—2018.5.16</p>
-<p>为期两天的转专业考试终于结束了，心里的一块大石头终于落地了。</p>
-</blockquote>
-<a id="more"></a>
-
-<p>先说说 5.15 的笔试。</p>
-<p>笔试考的是数据结构 B。一开始做感觉不是很难。不过中间做到一道简答题的第二小问：求一个森林 (含有三棵树) 的先序遍历，脑子一抽把原来的答案改掉了，改成了三棵子树同时进行先序遍历。森林如下图所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/1.png" alt=""></p>
-<p>第一小问是转化成二叉树： </p>
-<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/2.png" alt=""></p>
-<p>第二小问就是求这个<strong>森林</strong>的<strong>先序遍历</strong>。本来想都没想写的：<strong>ADBEC</strong>。后来真的是脑子抽了，改成了 <strong>ABCDE</strong>。因为想起了之前做到的一道题，森林的层次遍历就是三棵子树同时进行遍历的，这里先序遍历我想当然以为也是这样。后来一直没改，考完上网查了一下，翻书又确认了一遍，发现错了。求森林的先序遍历就是求<strong>对应二叉树的先序遍历</strong>啊！怪我基础知识掌握的不扎实。大概扣了 2-4 分。</p>
-<p>还有一道选择题不确定：求高度为 2 的 5 阶 B - 树最少的关键字个数。一开始我是不会做的，后来就从” 最小 “出发。B - 树每个结点<strong>最少</strong>有 ceil[m/2]-1 个元素。但是这有一个前提！那就是<strong>除根和失败结点以外</strong>！我又想当然的以为根结点也是，结果就以为根结点是 2 个关键字，下面有三个子树，2<em>3+2=8 个。但是根结点时可以*</em>最少只有一个关键字*<em>的！所以答案应该是 1+2</em>2=5！又两分没了。</p>
-<p>其他感觉还行，比较难的知识点，比如：双向链表，稀疏矩阵，二叉平衡树的插入，B - 树的插入、删除，迪杰斯特拉算法，快排，构建最小堆，都没有考到。最后两个算法设计题，第一道是计算一棵二叉树中关键字等于 x 的结点个数。第二道是简单选择排序算法。</p>
-<p>计算一棵二叉树中关键字等于 x 的结点个数：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义二叉树的结构体和二叉树结点类型的结构体(题目给出的)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span> *<span class="title">left</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span> *<span class="title">right</span>;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">&#125;BTnode;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span> *<span class="title">root</span>;</span></span><br><span class="line">&#125;Btree;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// count在main主函数里初始化为0</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Count</span><span class="params">(Btree *t,<span class="keyword">int</span> *count,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t-&gt;root-&gt;data == x)&#123;</span><br><span class="line">        count += <span class="number">1</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">    Count(t-&gt;left,&amp;count,x);  <span class="comment">//因为把count定义为指针变量，传的是count的地址，所以要加&amp;</span></span><br><span class="line">    Count(t-&gt;right,&amp;count,x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>简单选择排序算法： </p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//简单选择排序算法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SelectSort</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j,small,x;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; n;i ++)&#123;</span><br><span class="line">        small = i;</span><br><span class="line">        <span class="keyword">for</span>(j = i + <span class="number">1</span>;j &lt; n;j ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[small] &gt; a[j])&#123;</span><br><span class="line">                small = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(small != i)&#123;</span><br><span class="line">            x = a[i];</span><br><span class="line">            a[i] = a[small];</span><br><span class="line">            a[small] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其他应该没什么了。简答题考了一个直接插入排序，给出每一趟的结果。我当时在纠结的是括号括排好序的部分，还是未排好序的部分。最后还是选择括后面未排好序的部分。第一遍做完大概还剩几十分钟，就检查。前前后后检查了三遍，到考试时间结束才交上去，想把握大一点。</p>
-<p>再来讲讲 <strong>5.16</strong> 的面试。</p>
-<p>面试分在第二组。前面都是 16 级大二转计科、软工的，然后是 17 级大一转软工、软工 (嵌入式) 的。之前有听学姐说面试会要 2 分钟的英文面试。所以一直在背。准备的不够充分，本来应该昨天 15 日就背下来的，结果到 16 日上午才把英文版的自我介绍写好。中午坐 D1 到仙林正好 13 点多一点，就去图书馆背了几遍英文自我介绍，就去计算机学科楼等面试签到了。记得学姐去年说大二面试顺序是按笔试成绩从高到低排的，所以看到自己面试是第二个，心里有点高兴吧，也算给自己一点鼓励：我可以的。第一个进去面试的同学也是管理学院的，信管的一个大佬。感觉进去时间挺长的，有 5-6 分钟，出来时他说没问什么，然后我带着准备的装了获奖证书以及荣誉证书的文件夹就进去了。</p>
-<p>进去之后，首先是说老师好。然后就说了一下自己带的文件夹里放的是一些获奖证书，一个女老师拿过去看了。然后最右边的老师问是不是上过他的课，对我有点印象。我说蹭过他带的数据结构重修班两节课，因为之前想问这个老师关于机器学习的东西，就顺便去蹭了。发现不同老师教的不一样，深度也不一样。冥冥中自有天意，谁知道面试我的会是这个老师。然后就开始提问了。自我介绍都没让我介绍，坐在中间的老师先是问我对计科有什么了解。我就说了一下计科对数学要求高，还有编程能力，以及阅读英文文献的能力，因为先进的技术从国外传到国内需要一个过程，想要赶上学习的潮流，就得有阅读英文文献的能力。然后，讲到数学，对我印象深刻的老师就问了我一道数学的问题：如何理解矩阵的秩？我想了一下，就说是行列式的值。老师说不对，然后给我解释了一下。我确实忘了线性代数了 (大一下学的) 所以这方面的知识还得自己慢慢补，因为机器学习里经常用到。然后坐在中间的老师又问我，为什么要从电子商务转来计科，电子商务不是很火吗？我说，我想做人工智能方面的研究。大一升大二暑假看了部美剧《西部世界》，讲的是人工智能，机器人的觉醒，然后发现很有意思。后来买了谭浩强的 C 语言，整个暑假把这本书从头到尾重学了一遍，课后习题代码都动手敲了一遍，然后感觉就来了。后面就一发不可收拾，大二上自学了 Python。现在也在学深度学习。然后老师又问了我大创的是什么级别，我说是校级重点。问了我指导老师是谁，我说是带我微机接口的老师，名字挂到了通院的另一个老师名字下面。老师说那应该转通工啊 (可能他以为我做的是通工方向的大创)，我马上解释，我做的是和计算机有关的，做的是情绪识别，利用深度学习。然后那个女老师就问我证书里面有个 “单科成绩优秀奖学金” 是什么？我说是和同学合作发了一篇论文，辅导员通过了我的申请。接着，对我印象深刻的老师就说以后转来计算机，跟着计算机学院的老师做人工智能的项目。我说好的好的，谢谢老师。然后就面试结束了。期间，对我印象深刻的那个老师和其他老师提到好几次我对计算机很感兴趣。感觉冥冥中自有天意吧。</p>
-<p>后来想想还好面试问的问题不难。之前准备的时候还在想 “<strong>面向对象</strong>” 是什么意思，发现不会解释。就是大概知道什么意思，但是就是说不上来。另外准备的其他一些面试会问到的题目没有问到。最怕问 “<strong>你最大的缺点是什么</strong>” 这个问题了。</p>
-<p>走出面试会议室的大门，我感觉一下子轻松了好多。想想自己从当初大二上决定转，中间又畏惧大三补的课，退缩了几次，再到后面铁了心要转计科，真的是很艰难啊。不过还好，确定想转计科之后，就无所畏惧了。大二寒假留在学校培训美赛的时候，白天做数模题目，晚上抽一两个小时自学数据结构，看书 + 看 ppt。寒假结束差不多全部看了一遍，大二上开学花了两三周又看了一遍。然后就跟着学校的正常教学进度学了。到四月中旬的时候，开始重新复习，加上刷题。再到五月，开始做考研的数据结构题目。感觉自己为了转专业真的是投入了好多的精力。想想自己进入大学以来，没有哪一件事有准备转专业这么全力以赴了。最近的一件估计就是高考了。这种 all in 的感觉让我仿佛回到了高考。这样的感觉真不错！</p>
-<p>期待好消息，晚安！</p>
-<p>2018.5.17  0:36</p>
-<p><u>本文于 2018 年 5 月 17 日首发于 <a href="https://blog.csdn.net/Wonz5130/article/details/80344738" target="_blank" rel="noopener">CSDN</a>。</u></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>NJUPT</tag>
-        <tag>转专业</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello Wonz</title>
-    <url>/2020/01/23/0-Hello%20Wonz/</url>
-    <content><![CDATA[<blockquote>
-<p>阮一峰大神曾经说过: 喜欢写 Blog 的人, 会经历 3 个阶段。</p>
-<p>第一阶段，刚接触 Blog，觉得很新鲜，试着选择一个免费空间来写。<br>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。<br>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<a id="more"></a>
-
-<p>作为这里的第一篇博客，打算记录我与编程的一些重要事件。</p>
-<ul>
-<li>2018 年 1 月 28 日，有了 GitHub 账号，并且提交了第一个 contribution。</li>
-<li>2018 年 2 月 27 日，开始写第一篇博客。</li>
-<li>2018 年 7 月 7 日，转专业结果出了，成功转到计算机学院「计算机科学与技术」专业。</li>
-<li>2018 年 7 月，第一篇阅读量突破 1k 的博客诞生：<a href="https://blog.csdn.net/wonz5130/article/details/80465245" target="_blank" rel="noopener">求最小依赖集</a>。</li>
-<li>2018 年 7 月 27 日，有了自己的个人博客。</li>
-<li>2018 年 8 月 2 日，GitHub 有了第一个 star。</li>
-<li>2018 年 8 月 19 日，GitHub 有了第一个 follower。</li>
-<li>2018 年 9 月 1 日，搬来仙林了，终于要开始仙林的生活了，每一天都要加油！</li>
-<li>2018 年 10 月 19 日，GitHub 提交了第 1,000 个 Commits。</li>
-<li>2019 年 2 月 25 日，GitHub 加入第一个组织：<a href="https://github.com/NJUPTFreeExams" target="_blank" rel="noopener">NJUPTFreeExams</a>。</li>
-<li>2019 年 2 月 28 日，GitHub 第一个 star 数达两位数的项目：<a href="https://github.com/Wonz5130/NJUPT-Yellow-Pages" target="_blank" rel="noopener">NJUPT-Yellow-Pages</a></li>
-<li>2019 年 3 月 8 日，CSDN 粉丝数突破两位数，达到 100 个。</li>
-<li>2019 年 12 月 21-22 日，2020 全国硕士研究生招生考试初试。</li>
-<li>2019 年 12 月 31 日，CSDN 排名前 1W 名。</li>
-<li>2020 年 1 月 23 日，重构个人博客网站。</li>
-<li>未完待续······</li>
-</ul>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>复盘 | 我的 2019 年</title>
     <url>/2020/01/01/305-2019%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<blockquote>
@@ -1068,6 +991,83 @@
       </categories>
       <tags>
         <tag>复盘</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>转专业回忆</title>
+    <url>/2018/05/17/25-%E8%BD%AC%E4%B8%93%E4%B8%9A%E5%9B%9E%E5%BF%86/</url>
+    <content><![CDATA[<blockquote>
+<p>2018.5.15—2018.5.16</p>
+<p>为期两天的转专业考试终于结束了，心里的一块大石头终于落地了。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>先说说 5.15 的笔试。</p>
+<p>笔试考的是数据结构 B。一开始做感觉不是很难。不过中间做到一道简答题的第二小问：求一个森林 (含有三棵树) 的先序遍历，脑子一抽把原来的答案改掉了，改成了三棵子树同时进行先序遍历。森林如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/1.png" alt=""></p>
+<p>第一小问是转化成二叉树： </p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/2.png" alt=""></p>
+<p>第二小问就是求这个<strong>森林</strong>的<strong>先序遍历</strong>。本来想都没想写的：<strong>ADBEC</strong>。后来真的是脑子抽了，改成了 <strong>ABCDE</strong>。因为想起了之前做到的一道题，森林的层次遍历就是三棵子树同时进行遍历的，这里先序遍历我想当然以为也是这样。后来一直没改，考完上网查了一下，翻书又确认了一遍，发现错了。求森林的先序遍历就是求<strong>对应二叉树的先序遍历</strong>啊！怪我基础知识掌握的不扎实。大概扣了 2-4 分。</p>
+<p>还有一道选择题不确定：求高度为 2 的 5 阶 B - 树最少的关键字个数。一开始我是不会做的，后来就从” 最小 “出发。B - 树每个结点<strong>最少</strong>有 ceil[m/2]-1 个元素。但是这有一个前提！那就是<strong>除根和失败结点以外</strong>！我又想当然的以为根结点也是，结果就以为根结点是 2 个关键字，下面有三个子树，2<em>3+2=8 个。但是根结点时可以*</em>最少只有一个关键字*<em>的！所以答案应该是 1+2</em>2=5！又两分没了。</p>
+<p>其他感觉还行，比较难的知识点，比如：双向链表，稀疏矩阵，二叉平衡树的插入，B - 树的插入、删除，迪杰斯特拉算法，快排，构建最小堆，都没有考到。最后两个算法设计题，第一道是计算一棵二叉树中关键字等于 x 的结点个数。第二道是简单选择排序算法。</p>
+<p>计算一棵二叉树中关键字等于 x 的结点个数：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义二叉树的结构体和二叉树结点类型的结构体(题目给出的)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span> *<span class="title">left</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span> *<span class="title">right</span>;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">&#125;BTnode;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span> *<span class="title">root</span>;</span></span><br><span class="line">&#125;Btree;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// count在main主函数里初始化为0</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Count</span><span class="params">(Btree *t,<span class="keyword">int</span> *count,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t-&gt;root-&gt;data == x)&#123;</span><br><span class="line">        count += <span class="number">1</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">    Count(t-&gt;left,&amp;count,x);  <span class="comment">//因为把count定义为指针变量，传的是count的地址，所以要加&amp;</span></span><br><span class="line">    Count(t-&gt;right,&amp;count,x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简单选择排序算法： </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//简单选择排序算法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SelectSort</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j,small,x;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; n;i ++)&#123;</span><br><span class="line">        small = i;</span><br><span class="line">        <span class="keyword">for</span>(j = i + <span class="number">1</span>;j &lt; n;j ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[small] &gt; a[j])&#123;</span><br><span class="line">                small = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(small != i)&#123;</span><br><span class="line">            x = a[i];</span><br><span class="line">            a[i] = a[small];</span><br><span class="line">            a[small] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其他应该没什么了。简答题考了一个直接插入排序，给出每一趟的结果。我当时在纠结的是括号括排好序的部分，还是未排好序的部分。最后还是选择括后面未排好序的部分。第一遍做完大概还剩几十分钟，就检查。前前后后检查了三遍，到考试时间结束才交上去，想把握大一点。</p>
+<p>再来讲讲 <strong>5.16</strong> 的面试。</p>
+<p>面试分在第二组。前面都是 16 级大二转计科、软工的，然后是 17 级大一转软工、软工 (嵌入式) 的。之前有听学姐说面试会要 2 分钟的英文面试。所以一直在背。准备的不够充分，本来应该昨天 15 日就背下来的，结果到 16 日上午才把英文版的自我介绍写好。中午坐 D1 到仙林正好 13 点多一点，就去图书馆背了几遍英文自我介绍，就去计算机学科楼等面试签到了。记得学姐去年说大二面试顺序是按笔试成绩从高到低排的，所以看到自己面试是第二个，心里有点高兴吧，也算给自己一点鼓励：我可以的。第一个进去面试的同学也是管理学院的，信管的一个大佬。感觉进去时间挺长的，有 5-6 分钟，出来时他说没问什么，然后我带着准备的装了获奖证书以及荣誉证书的文件夹就进去了。</p>
+<p>进去之后，首先是说老师好。然后就说了一下自己带的文件夹里放的是一些获奖证书，一个女老师拿过去看了。然后最右边的老师问是不是上过他的课，对我有点印象。我说蹭过他带的数据结构重修班两节课，因为之前想问这个老师关于机器学习的东西，就顺便去蹭了。发现不同老师教的不一样，深度也不一样。冥冥中自有天意，谁知道面试我的会是这个老师。然后就开始提问了。自我介绍都没让我介绍，坐在中间的老师先是问我对计科有什么了解。我就说了一下计科对数学要求高，还有编程能力，以及阅读英文文献的能力，因为先进的技术从国外传到国内需要一个过程，想要赶上学习的潮流，就得有阅读英文文献的能力。然后，讲到数学，对我印象深刻的老师就问了我一道数学的问题：如何理解矩阵的秩？我想了一下，就说是行列式的值。老师说不对，然后给我解释了一下。我确实忘了线性代数了 (大一下学的) 所以这方面的知识还得自己慢慢补，因为机器学习里经常用到。然后坐在中间的老师又问我，为什么要从电子商务转来计科，电子商务不是很火吗？我说，我想做人工智能方面的研究。大一升大二暑假看了部美剧《西部世界》，讲的是人工智能，机器人的觉醒，然后发现很有意思。后来买了谭浩强的 C 语言，整个暑假把这本书从头到尾重学了一遍，课后习题代码都动手敲了一遍，然后感觉就来了。后面就一发不可收拾，大二上自学了 Python。现在也在学深度学习。然后老师又问了我大创的是什么级别，我说是校级重点。问了我指导老师是谁，我说是带我微机接口的老师，名字挂到了通院的另一个老师名字下面。老师说那应该转通工啊 (可能他以为我做的是通工方向的大创)，我马上解释，我做的是和计算机有关的，做的是情绪识别，利用深度学习。然后那个女老师就问我证书里面有个 “单科成绩优秀奖学金” 是什么？我说是和同学合作发了一篇论文，辅导员通过了我的申请。接着，对我印象深刻的老师就说以后转来计算机，跟着计算机学院的老师做人工智能的项目。我说好的好的，谢谢老师。然后就面试结束了。期间，对我印象深刻的那个老师和其他老师提到好几次我对计算机很感兴趣。感觉冥冥中自有天意吧。</p>
+<p>后来想想还好面试问的问题不难。之前准备的时候还在想 “<strong>面向对象</strong>” 是什么意思，发现不会解释。就是大概知道什么意思，但是就是说不上来。另外准备的其他一些面试会问到的题目没有问到。最怕问 “<strong>你最大的缺点是什么</strong>” 这个问题了。</p>
+<p>走出面试会议室的大门，我感觉一下子轻松了好多。想想自己从当初大二上决定转，中间又畏惧大三补的课，退缩了几次，再到后面铁了心要转计科，真的是很艰难啊。不过还好，确定想转计科之后，就无所畏惧了。大二寒假留在学校培训美赛的时候，白天做数模题目，晚上抽一两个小时自学数据结构，看书 + 看 ppt。寒假结束差不多全部看了一遍，大二上开学花了两三周又看了一遍。然后就跟着学校的正常教学进度学了。到四月中旬的时候，开始重新复习，加上刷题。再到五月，开始做考研的数据结构题目。感觉自己为了转专业真的是投入了好多的精力。想想自己进入大学以来，没有哪一件事有准备转专业这么全力以赴了。最近的一件估计就是高考了。这种 all in 的感觉让我仿佛回到了高考。这样的感觉真不错！</p>
+<p>期待好消息，晚安！</p>
+<p>2018.5.17  0:36</p>
+<p><u>本文于 2018 年 5 月 17 日首发于 <a href="https://blog.csdn.net/Wonz5130/article/details/80344738" target="_blank" rel="noopener">CSDN</a>。</u></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>NJUPT</tag>
+        <tag>转专业</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello Wonz</title>
+    <url>/2018/01/28/0-Hello%20Wonz/</url>
+    <content><![CDATA[<blockquote>
+<p>阮一峰大神曾经说过: 喜欢写 Blog 的人, 会经历 3 个阶段。</p>
+<p>第一阶段，刚接触 Blog，觉得很新鲜，试着选择一个免费空间来写。<br>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。<br>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>作为这里的第一篇博客，打算记录我与编程的一些重要事件。</p>
+<ul>
+<li>2018 年 1 月 28 日，有了 GitHub 账号，并且提交了第一个 contribution。</li>
+<li>2018 年 2 月 27 日，开始写第一篇博客。</li>
+<li>2018 年 7 月 7 日，转专业结果出了，成功转到计算机学院「计算机科学与技术」专业。</li>
+<li>2018 年 7 月，第一篇阅读量突破 1k 的博客诞生：<a href="https://blog.csdn.net/wonz5130/article/details/80465245" target="_blank" rel="noopener">求最小依赖集</a>。</li>
+<li>2018 年 7 月 27 日，有了自己的个人博客。</li>
+<li>2018 年 8 月 2 日，GitHub 有了第一个 star。</li>
+<li>2018 年 8 月 19 日，GitHub 有了第一个 follower。</li>
+<li>2018 年 9 月 1 日，搬来仙林了，终于要开始仙林的生活了，每一天都要加油！</li>
+<li>2018 年 10 月 19 日，GitHub 提交了第 1,000 个 Commits。</li>
+<li>2019 年 2 月 25 日，GitHub 加入第一个组织：<a href="https://github.com/NJUPTFreeExams" target="_blank" rel="noopener">NJUPTFreeExams</a>。</li>
+<li>2019 年 2 月 28 日，GitHub 第一个 star 数达两位数的项目：<a href="https://github.com/Wonz5130/NJUPT-Yellow-Pages" target="_blank" rel="noopener">NJUPT-Yellow-Pages</a></li>
+<li>2019 年 3 月 8 日，CSDN 粉丝数突破两位数，达到 100 个。</li>
+<li>2019 年 12 月 21-22 日，2020 全国硕士研究生招生考试初试。</li>
+<li>2019 年 12 月 31 日，CSDN 排名前 1W 名。</li>
+<li>2020 年 1 月 23 日，重构个人博客网站。</li>
+<li>未完待续······</li>
+</ul>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
       </tags>
   </entry>
 </search>
