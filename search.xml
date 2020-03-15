@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>RSS应用分享：RSSHub</title>
+    <url>/2020/03/15/310-RSS/</url>
+    <content><![CDATA[<blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200315130500.png" alt=""></p>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>高效获取信息是我这种喜欢效率的人的首选方式。</p>
+<p>正如开发她的人所说「万物皆可RSS」。覆盖的 RSS 真的非常丰富！（图二: RSSHub 路由真的非常多！）爱折腾的话其实自己研究一下参数选择会发现很多有意思的 RSS。</p>
+<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><p>我一般提取一些自己感兴趣的 RSS，然后导入「Reader」App 来使用的。也可以用其他支持 RSS 订阅的 App 替代。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200315130607.jpg" alt=""></p>
+<p>当然，提取 RSS 非常推荐「RSSHub」作者开发的衍生项目「RSSHub Radar」或者我在 GitHub 认识的翠翠大佬@idealclover 开发的「Easy-to-RSS」。两款都是浏览器插件，支持一键式发现当前网页的 RSS。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200315130414.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200315130304.png" alt=""></p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>下面举几个我的使用场景：</p>
+<ul>
+<li><p>大学通知<br>经历过的应该都知道，一所大学不同学院甚至一个学院的不同辅导员发通知的时间是不统一的，而且难免会有通知遗漏。比如我大学期间了解有什么比赛可以参加就是通过自己平时逛教务处知道的。这时，我就会使用 RSS 来实时订阅学校的教务处通知，掌握第一手资讯是很重要的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200315130601.png" alt=""></p>
+</li>
+<li><p>GitHub<br>比如我最近忙着找工作，在看「CS-Notes」来复习计算机基础知识。该项目已经 90k+ stars 了，不过难免会有一些小错误。比如之前在看 Linux 方面的笔记就发现了作者的笔误，所以我需要及时知道该项目的 Issue，此时用 RSS 就非常方便。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200315130346.png" alt=""></p>
+</li>
+</ul>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://docs.rsshub.app/" target="_blank" rel="noopener">RSSHub 官方使用文档</a><br><a href="https://github.com/DIYgod/RSSHub" target="_blank" rel="noopener">RSSHub 源码</a><br><a href="https://github.com/DIYgod/RSSHub-Radar" target="_blank" rel="noopener">RSSHub Radar 源码</a><br><a href="https://github.com/idealclover/Easy-to-RSS" target="_blank" rel="noopener">Easy-to-RSS 源码</a></p>
+<h3 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h3><p>在「Easy-to-RSS」中发现了「即刻」的RSS（虽然已经 404 了）。</p>
+]]></content>
+      <categories>
+        <category>分享</category>
+      </categories>
+      <tags>
+        <tag>RSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我选择直接工作，不读研</title>
     <url>/2020/03/05/309-work-not-postgraduate/</url>
     <content><![CDATA[<blockquote>
