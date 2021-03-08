@@ -1,6 +1,319 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用 GitHub + PicGo + jsDelivr 搭建自己的私人图床</title>
+    <url>/2021/03/08/340-Private-ImgHost/</url>
+    <content><![CDATA[<blockquote>
+<p>妈妈再也不用担心我上传图片啦！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2021-03-08_21-44-50.png" alt=""></p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h3><p>以前写技术博客的时候，都是用的本地图片，一些博客平台比如 <strong>CSDN</strong> 同步更新的时候需要手动上传图片，这很浪费时间和精力。为了减少重复工作，一直有用<strong>图床</strong>的想法，但是又听到 <code>XXX图床挂了</code> ，一直很担心这个问题。后来发现了一个非常棒的搭建属于自己的私人图床的方法，现记录下来，希望帮助到有同样需求的朋友们。</p>
+<h3 id="二、创建-GitHub-图床仓库"><a href="#二、创建-GitHub-图床仓库" class="headerlink" title="二、创建 GitHub 图床仓库"></a>二、创建 GitHub 图床仓库</h3><p>首先你需要有个 <strong>GitHub</strong> 账号（搞技术的应该都知道全球最大程序员<del>同性</del>交友网站吧）然后按照下图提示创建一个图床仓库，名字随便起好了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2020-01-30_20-47-13.png" alt=""></p>
+<p><strong>注意:</strong> 因为 <strong>GitHub</strong> 现在支持创建<strong>私人仓库</strong>了，但是图床仓库不能设为私人的，否则会影响后面的图片超链接显示。一开始我 <strong>GitHub</strong> 图床仓库设成 Private，测试之后发现博客里的图片并不能成功显示出来，后来我把图床仓库改为 Public 之后，图片就能成功显示了。</p>
+<h3 id="三、生成-Access-token"><a href="#三、生成-Access-token" class="headerlink" title="三、生成 Access token"></a>三、生成 Access token</h3><p>然后进入个人账号的 <code>Settings</code> ：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2020-01-30_20-48-23.png" alt=""></p>
+<p>然后选择 <code>Developer settings</code> ：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2020-01-30_20-49-26.png" alt=""></p>
+<p>再选择 <code>Personal access tokens</code> ：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2020-01-30_20-50-47.png" alt=""></p>
+<p>创建新的 <code>token</code>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2020-01-30_20-51-50.png" alt=""></p>
+<p>然后填写 Note，并把 <code>repo</code> 全勾上。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2020-01-30_20-52-52.png" alt=""></p>
+<p>然后点击页面底部的 <code>Generate token</code> ，就生成了 <code>token</code>，记得及时复制并保存下来，页面关闭就看不到了，后面要用到。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2020-01-30_20-53-46.png" alt=""></p>
+<h3 id="四、配置-PicGo，使用-jsDelivr-的-CDN"><a href="#四、配置-PicGo，使用-jsDelivr-的-CDN" class="headerlink" title="四、配置 PicGo，使用 jsDelivr 的 CDN"></a>四、配置 PicGo，使用 jsDelivr 的 CDN</h3><p>下载 <a href="https://github.com/Molunerfinn/picgo/releases" target="_blank" rel="noopener">PicGo</a> 软件，安装。</p>
+<p>选择系统对应的版本下载，我用的是 <code>Windows</code> 系统，所以直接下的 <code>.exe</code> 文件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2020-01-30_20-56-24.png" alt=""></p>
+<p>打开 PicGo 的图床设置：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2020-01-30_20-57-49.png" alt=""></p>
+<p>输入自己的 GitHub 仓库名、分支名写 <code>master</code> 、Token、存储路径就写 <code>img/</code> 就行了。</p>
+<p>因为我们需要使用 <code>jsDelivr</code> 加速访问，所以将自定义域名设置为 <code>https://cdn.jsdelivr.net/gh/GitHub用户名/图床仓库名</code> ，进行配置：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2020-01-30_20-58-29.png" alt=""></p>
+<h3 id="五、使用私人图床"><a href="#五、使用私人图床" class="headerlink" title="五、使用私人图床"></a>五、使用私人图床</h3><p>点击上传区，选择图床为 <strong>GitHub图床</strong>，链接格式为 <code>Markdown</code> ，直接拖动图片到方框里，等待上传完成，会自动复制 Markdown 链接，然后直接粘贴到正在写的博客中就行，非常方便快捷，大大减少了写作中无意义的重复劳动。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/Snipaste_2020-01-30_21-02-22.png" alt=""></p>
+<h3 id="六、使用提示"><a href="#六、使用提示" class="headerlink" title="六、使用提示"></a>六、使用提示</h3><p>图片上传图床还要注意保护个人隐私，因为仓库是 <strong>Public</strong> 的，其他用户其实可以看到你上传了什么图片。</p>
+<p>虽然这篇文章是一年前写的，但是大学室友最近按照我之前写的教程亲测有效，所以我决定重新排下版，润色了一下文字，重新发表出来。</p>
+<h3 id="七、致谢"><a href="#七、致谢" class="headerlink" title="七、致谢"></a>七、致谢</h3><p><a href="https://segmentfault.com/a/1190000020240864" target="_blank" rel="noopener">GitHub+jsDelivr+PicGo搭建免费图床</a></p>
+]]></content>
+      <categories>
+        <category>分享</category>
+      </categories>
+      <tags>
+        <tag>图床</tag>
+        <tag>PicGo</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《亲密关系》书摘</title>
+    <url>/2021/03/02/339-Intimate-Relationships/</url>
+    <content><![CDATA[<blockquote>
+<p>这是 Wonz 记录的 <strong>第 1 篇</strong> 书摘</p>
+<p>书籍：《亲密关系（第6版）》 (社会心理学精品译丛)</p>
+<p>作者：罗兰·米勒 (Rowland S. Miller)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/s29497110.jpg" alt=""></p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h3><p>观人心，知其人</p>
+<blockquote>
+<p>人的本质就是心理的载体。</p>
+</blockquote>
+<h3 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h3><p>人是社会动物</p>
+<blockquote>
+<p>人类是非常社会化的动物。如果剥夺了和他人的紧密接触，这会令人很痛苦，人类社会属性的核心部分正是对亲密关系的需要。</p>
+</blockquote>
+<h3 id="3、"><a href="#3、" class="headerlink" title="3、"></a>3、</h3><p>六方面区别</p>
+<blockquote>
+<p>亲密关系和泛泛之交至少在六个方面存在程度差异：了解（knowledge）、关心（care）、相互依赖性（interdependence）、相互一致性（mutuality）、信任（trust）以及承诺（commitment）。</p>
+</blockquote>
+<h3 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h3><p>曝光效应：即多接触</p>
+<blockquote>
+<p>重复地接触他人（甚至只要看到他人照片）通常能增加我们对他们的喜欢程度，而不会导致厌烦，此即曝光效应（mere exposure effect）[1]（Zajonc，2001）。</p>
+</blockquote>
+<h3 id="5、"><a href="#5、" class="headerlink" title="5、"></a>5、</h3><p>居然和月经周期有关</p>
+<blockquote>
+<p>女性喜欢哪种男人脸型取决于她们的月经周期：当处在排卵前的受孕期，她们会觉得不修边幅、具有男子气特征的面孔更吸引人，但其他时间则更喜欢青春型、具有孩子气特征的男性面孔（Little et al.，2002）。</p>
+</blockquote>
+<h3 id="6、"><a href="#6、" class="headerlink" title="6、"></a>6、</h3><p>聪明是优点</p>
+<blockquote>
+<p>女性还喜欢聪明的男性（这对于读到这本书的大多数男性都应该是好消息）。</p>
+</blockquote>
+<h3 id="7、"><a href="#7、" class="headerlink" title="7、"></a>7、</h3><p>受孕期喜欢坏男人</p>
+<blockquote>
+<p>当处在受孕期时，妇女比其他时间更偏爱男子气的面孔、低沉的嗓音、有着对称体型男子的体味以及更大胆、更傲慢、更有领袖魅力的行为（Thornhill &amp; Gangestad，2008）。所以，妇女在最有可能怀上孩子时易被自信果断、狂妄自大的男子吸引，即那些“举止更像浪荡子而非好父亲”的男子（Perrett，2010，p.104）。但在这个月的其他时间则偏爱温情脉脉、和善友好、谦虚保守的男子。如果女性没有排卵（如服用避孕药），这种周期性的变化则不会发生（Smith et al.，2009）。</p>
+</blockquote>
+<h3 id="8、"><a href="#8、" class="headerlink" title="8、"></a>8、</h3><p>情侣之间差距太大不利于长久相处</p>
+<blockquote>
+<p>有时运气好的话人们偶尔能与长相胜于自己的人约会，但这种恋爱关系并不稳定，也很难发展到订婚，因为双方并不是“同一类人”（White，1980b）。这表明，即使每个人都希望自己的伴侣长相俊美，但只有那些容貌也俊美的人才能得偿所愿。长相确实俊美的人并不愿意和容貌平庸的家伙成为伴侣，同样我们普通人也不会愿意和长相“差于我们”的伴侣长相厮守（Lee et al，2008）。</p>
+</blockquote>
+<h3 id="9、"><a href="#9、" class="headerlink" title="9、"></a>9、</h3><p>自己对他人的兴趣公式</p>
+<blockquote>
+<p>衡量自己对他人的实际兴趣，以及接近伴侣和建立亲密关系的可能性（Shanteau &amp; Nagy，1979）：</p>
+<p>对未来伴侣的期望值=伴侣的外表吸引力×伴侣接纳自己的可能性</p>
+</blockquote>
+<h3 id="10、"><a href="#10、" class="headerlink" title="10、"></a>10、</h3><p>平衡理论</p>
+<blockquote>
+<p>平衡理论（balance theory）的观点，该理论认为人们期望他们的思想、感情和社交关系能够保持一致（Heider，1958）。</p>
+</blockquote>
+<h3 id="11、"><a href="#11、" class="headerlink" title="11、"></a>11、</h3><p>敌人的敌人就是我们的朋友</p>
+<blockquote>
+<p>如果我们获悉某人和我们一样厌恶其他人，我们就倾向于喜欢与我们态度一致的人（Bosson et al.，2006）；我们还常常指望敌人的敌人就是我们的朋友，即使我们还没见过他们。</p>
+</blockquote>
+<h3 id="12、"><a href="#12、" class="headerlink" title="12、"></a>12、</h3><p>男的都喜欢二十多岁的小姑娘</p>
+<blockquote>
+<p>男性特别看重女性的姣好容颜（见图3.5），并且随着男性年龄的增长，与他们结婚的女性却比他们越来越年轻（Dunn et al.，2010）：20多岁时结婚的男子，其伴侣平均要比他小2岁；但如果到50多岁才结婚，其妻子可能比他小15岁。</p>
+</blockquote>
+<h3 id="13、"><a href="#13、" class="headerlink" title="13、"></a>13、</h3><p>真的吗？</p>
+<blockquote>
+<p>女性对伴侣年龄的偏爱不会随着年龄增加而发生变化；女人终其一生都喜欢嫁给比自己略大几岁的男人（Dunn et al.，2010）。</p>
+</blockquote>
+<h3 id="14、"><a href="#14、" class="headerlink" title="14、"></a>14、</h3><p>假想伴侣是自己喜欢的那样</p>
+<blockquote>
+<p>在某种程度上，人们似乎是和幻想中的伴侣（把伴侣刻画成类似于自己的精神配偶）结婚——他们爱上的是另一种人，却认为自己的伴侣就是这种人（Montoya &amp; Horton，2004）——当他们真正了解彼此在很多方面存在严重分歧时，或许会很失望。这种把伴侣构造成美满形象的倾向有利于维持亲密关系。</p>
+</blockquote>
+<h3 id="15、"><a href="#15、" class="headerlink" title="15、"></a>15、</h3><p>理想自我</p>
+<blockquote>
+<p>我们往往喜欢那些与我们的理想自我相像的人，即那些拥有我们期望得到却并不具备的品质的人。这种倾向性比较复杂，因为如果那些人超过了我们的理想自我，让我们相形见绌，就具有威胁意义和令人不快了（Herbst et al.，2003）。</p>
+</blockquote>
+<h3 id="16、"><a href="#16、" class="headerlink" title="16、"></a>16、</h3><p>相像也有细微差距，可以促进情侣变得更好</p>
+<blockquote>
+<p>最有吸引力的伴侣仍然是那些在很多方面和我们相像，但又拥有我们通过努力就能实现的理想特征的人（Figueredo et al.，2006）。这样的人根本不是与我们相左的“异性”。但是只要差距不是过大，或许我们更喜欢自己想要成为的那种理想式的人物，而不是与我们目前非常相像的人。</p>
+</blockquote>
+<h3 id="17、"><a href="#17、" class="headerlink" title="17、"></a>17、</h3><p>叛逆</p>
+<blockquote>
+<p>罗密欧与朱丽叶效应（Romeo and Juliet effect）：父母越是干涉子女的恋爱自由，他们彼此之间就会越加相爱。</p>
+</blockquote>
+<h3 id="18、"><a href="#18、" class="headerlink" title="18、"></a>18、</h3><p>理想伴侣特征</p>
+<blockquote>
+<p>大多数人都期望伴侣有以下的特点：</p>
+<ul>
+<li>热情和忠诚，值得信赖、亲切友善、给予支持、善解人意；</li>
+<li>吸引力和活力，长相俊美、性感、外向；</li>
+<li>社会地位和资源，经济宽裕、生活安心。</li>
+</ul>
+</blockquote>
+<h3 id="19、"><a href="#19、" class="headerlink" title="19、"></a>19、</h3><p>验证性偏差</p>
+<blockquote>
+<p>验证性偏差（confirmation biases）：他们常常寻找那些能够证明自己正确的信息，而不是那些证明自己错误的证据（Snyder，1981）。</p>
+</blockquote>
+<h3 id="20、"><a href="#20、" class="headerlink" title="20、"></a>20、</h3><p>女性更敏感</p>
+<blockquote>
+<p>实际上，对异性恋爱关系预测最准确的往往是女当事人的朋友（Loving，2006）。如果她的朋友赞成这段恋情，就很有可能持续，但如果他们认为这段恋情注定要失败，就可能真的告吹（Etcheverry &amp; Agnew，2004）。</p>
+</blockquote>
+<h3 id="21、"><a href="#21、" class="headerlink" title="21、"></a>21、</h3><p>不断调整期望</p>
+<blockquote>
+<p>随着对伴侣了解程度的增加，不断调整自己对理想伴侣的期望，这样，对伴侣的期望标准就能切合伴侣的现状（Fletcher et al.，2000）。</p>
+</blockquote>
+<h3 id="22、"><a href="#22、" class="headerlink" title="22、"></a>22、</h3><p>有害观点</p>
+<blockquote>
+<ul>
+<li><p>争吵具有破坏性。争吵就表明伴侣爱自己还不够深。如果彼此深深相爱，就不会发生任何争执。</p>
+</li>
+<li><p>“读心术”很重要。真正彼此关爱的伴侣仅凭直觉就能知道对方的需要和偏好，根本不需要告知对方自己的所思所想。如果必须告诉伴侣自己的想法和愿望，那只能说明伴侣爱自己还不够深。</p>
+</li>
+<li><p>伴侣是不会发生改变的。一旦亲密关系变糟，就无法得到改善。如果爱人曾伤害过你，毫无疑问还会一而再，再而三地伤害你。</p>
+</li>
+<li><p>每一次的性生活都应该是完美的。只要爱情是忠贞的，每一次的性生活都应该是神奇美妙、令人满足的。伴侣应该经常渴望并为性生活做好准备。</p>
+</li>
+<li><p>男人和女人就是不一样。男人和女人的性格和需要非常不同，很难真正理解对方。</p>
+</li>
+<li><p>美好姻缘天注定。根本无需努力来维护美满的夫妻关系。夫妻要么彼此脾性相投、快乐到老，要么格格不入、争执一生。</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="23、"><a href="#23、" class="headerlink" title="23、"></a>23、</h3><p>期望具有促动作用</p>
+<blockquote>
+<p>对他人的期望能引导我们对他人做出的行为反应，所以期望具有促动作用。</p>
+</blockquote>
+<h3 id="24、"><a href="#24、" class="headerlink" title="24、"></a>24、</h3><p>女性比男性敏感</p>
+<blockquote>
+<p>引人注目的是，女性在月经周期的某些阶段可能变得特别机敏：当她们处在受孕期——也就是说，正好在每个月排卵之前的几天——她们能迅速而轻松地判断出男性的力量和强势，其他时间则迟钝得多（Macrae et al.，2002）。</p>
+</blockquote>
+<h3 id="25、"><a href="#25、" class="headerlink" title="25、"></a>25、</h3><p>向喜欢的人表现自己</p>
+<blockquote>
+<p>如果别人吸引了我们，我们往往会对他们更加开放。不过，我们也可能因为对他人进行了自我表露，从而倾向于喜欢他们。</p>
+</blockquote>
+<h3 id="26、"><a href="#26、" class="headerlink" title="26、"></a>26、</h3><p>谈话风格差异</p>
+<blockquote>
+<p>只有在与男性谈论男性话题时她们才更具试探性。而且，当男性与女性谈论女性话题时他们比女性更具试探性。</p>
+</blockquote>
+<h3 id="27、"><a href="#27、" class="headerlink" title="27、"></a>27、</h3><p>表达性水平与性别没关系</p>
+<blockquote>
+<p>个体交往的亲密程度一般与他/她的表达性水平有关，而一旦你把这一因素考虑进来，沟通双方是男性还是女性就不再显得那么重要了。</p>
+</blockquote>
+<h3 id="28、"><a href="#28、" class="headerlink" title="28、"></a>28、</h3><p>一件一件事沟通，不一起抱怨多件事</p>
+<blockquote>
+<p>如果他们抱怨某事，很少能准确到位；相反，他们倾向于数怨并诉（kitchen-sinking），即同时谈及几个问题（以至于谈到许多问题反而忘记了刚刚抱怨过的事情）。这通常使他们最为关注的事情掩埋在同时责难的许多沮丧事件之中。</p>
+</blockquote>
+<h3 id="29、"><a href="#29、" class="headerlink" title="29、"></a>29、</h3><p>比较水平CL</p>
+<blockquote>
+<p>相互依赖理论假定每个人都有一个与众不同的比较水平（comparison level，CL），即我们认为自己在与他人的交往中应当得到的结果值。CL建立在过去经验的基础之上。</p>
+</blockquote>
+<h3 id="30、"><a href="#30、" class="headerlink" title="30、"></a>30、</h3><p>替代的比较水平CLalt</p>
+<blockquote>
+<p>替代的比较水平（comparison level for alternative，CLalt），来确定我们在其他的亲密关系中是否会更好。CLalt是指如果我们抛弃目前的亲密关系，而转投可以选择的更好的伴侣或情境，所能得到的交往结果。</p>
+</blockquote>
+<h3 id="31、"><a href="#31、" class="headerlink" title="31、"></a>31、</h3><p>CLalt决定依赖程度</p>
+<blockquote>
+<p>CLalt决定了我们对亲密关系的依赖程度。不管我们满意与否，如果我们认为现有的亲密关系是我们目前能得到的最好的关系，我们就会依赖现在的伴侣，而不会轻言离开（Ellis et al.，2002）。而且，我们当前亲密关系的结果和更糟的替代选择差距越大，依赖程度就越深。如果当前的结果仅比替代选择好一点点，我们就不会非常需要伴侣，如果替代选择不断改善，我们就会离开自己的伴侣。</p>
+</blockquote>
+<h3 id="32、"><a href="#32、" class="headerlink" title="32、"></a>32、</h3><p>CLalt影响最终做出离婚决定</p>
+<blockquote>
+<p>想想离婚通常的发展轨迹：已离婚的夫妻在决定分手前，往往有相当长的一段时间在痛苦中煎熬。是什么最终促使他们采取行动？CLalt发生了变化：他们的CLalt最终超过了他们目前关系的结果（Albrecht &amp; Kunz，1980）。</p>
+</blockquote>
+<h3 id="33、"><a href="#33、" class="headerlink" title="33、"></a>33、</h3><p>困境</p>
+<blockquote>
+<p>但是如果你的工作非常糟糕、工资也低，你非常讨厌，但你不会辞职，因为这是你目前能得到的最好的工作，那么你就会理解我这里所讨论的情形。这就是这类人所处的困境。</p>
+</blockquote>
+<h3 id="34、"><a href="#34、" class="headerlink" title="34、"></a>34、</h3><p>失去比得到影响更大</p>
+<blockquote>
+<p>失去通常比同等程度的得到对我们的影响更大；我们喜欢得到，但我们更憎恨失去（Kahneman &amp; Tversky，1982）。</p>
+</blockquote>
+<h3 id="35、"><a href="#35、" class="headerlink" title="35、"></a>35、</h3><p>奖赏:代价=5:1</p>
+<blockquote>
+<p>要保持满意的亲密关系，我们或许需要保持至少5:1的奖赏-代价比率。</p>
+</blockquote>
+<h3 id="36、"><a href="#36、" class="headerlink" title="36、"></a>36、</h3><p>默默提供支持</p>
+<blockquote>
+<p>同居的情侣有一方正在准备紧张的律师资格考试时，双方把各自给予和得到的支持都记录下来，结果发现最能减少应试者焦虑的，是情侣提供而应试者并未觉察到的帮助（Bolger et al.，2000）。有时候，帮助朋友最好的方法就是默默地提供支持，从而不会增添他/她的心理负担。</p>
+</blockquote>
+<h3 id="37、"><a href="#37、" class="headerlink" title="37、"></a>37、</h3><p>帮助和支持要看情境</p>
+<blockquote>
+<p>并没有适合所有情境的单一固定的支持模式；朋友所欣赏的帮助和支援的类型取决于他/她目前的需要、你的能力和友谊当前的状态（Iida et al.，2008）。</p>
+</blockquote>
+<h3 id="38、"><a href="#38、" class="headerlink" title="38、"></a>38、</h3><p>夫妻双方要有共同朋友</p>
+<blockquote>
+<p>事实上，如果夫妻双方没有共同的朋友，这样的婚姻通常很艰难。正如图7.1所示，如果夫妻双方都没有一个共同的朋友，配偶们就会面临更多的婚姻问题（Amato et al.，2007）。已婚人士有自己的私人朋友没什么坏处，但如果只有独享式的友谊似乎就有风险。</p>
+</blockquote>
+<p>﻿### 39、</p>
+<p>女性分享情感，男性注重娱乐</p>
+<blockquote>
+<p>大量研究表明女性之间的友谊是以情感分享（emotional sharing）和自我表露为其特征的，而男性友谊则是围绕着共同活动（shared activities）、相伴相随和搞笑娱乐而展开的（Fehr，1996；Marshall，2010）。</p>
+</blockquote>
+<h3 id="40、"><a href="#40、" class="headerlink" title="40、"></a>40、</h3><p>想到了电影《One Day》</p>
+<blockquote>
+<p>大卫和安妮在一起读研究生时成为最要好的朋友。他们同一年入学，选修了同样的课程，还在课外的几个项目上一起精诚合作。他们了解彼此，双方都尽责、聪明，并且完全尊敬和信任对方。他们彼此知悉对方最私人的秘密。一起游玩时他们感到极大的快乐。他们都不是墨守成规的人，能分享具有讽刺意味、不落俗套的幽默；其他人不怎么看好的笑话，却经常能引起他们的开怀大笑。在安妮完成她博士论文的那天晚上，他们喝醉了，几乎发生了性关系，却被人打断，机会就这样溜走了。不久之后，他们毕业了，在美国不同的地方找到了工作，他去了加州，而她去了明尼苏达。而今，6年之后，他们都已结婚了，只能在每年的学术会议上才能见上一面。</p>
+</blockquote>
+<h3 id="41、"><a href="#41、" class="headerlink" title="41、"></a>41、</h3><p>爱情三角理论</p>
+<blockquote>
+<p>爱情的第一个成分是亲密（intimacy），包括热情、理解、沟通、支持和分享等爱情关系中常见的特征。第二个成分是激情（passion），其主要特征为性的唤醒和欲望。激情常以性渴望的形式出现，但任何能使伴侣感到满足的强烈情感需要都可以归入此类。爱情的最后一个成分是承诺（commitment），指投身于爱情和努力维护爱情的决心。承诺在本质上主要是认知性的，而亲密是情感性的，激情则是一种动机或者驱力。恋爱关系的“火热”来自激情，温情来自亲密；相形之下，承诺反映的则是完全与情感或性情无关的决策。</p>
+</blockquote>
+<h3 id="42、"><a href="#42、" class="headerlink" title="42、"></a>42、</h3><p>柯立芝效应</p>
+<blockquote>
+<p>比如，把两只处在发情期的公鼠和母鼠关在一起，公鼠会多次与母鼠交配直至筋疲力尽；然而，如果用另一只处在受孕期的母鼠代替第一只母鼠，公鼠又会重新焕发兴趣和活力，扑身而上与之交配。这样不断地以新母鼠代替老母鼠，引发出的公鼠射精次数要两三倍于它只与同一个母鼠关在一起的情形（Dewsbury，1981）。研究者把这种新奇对性唤醒的影响称为柯立芝效应（Coolidge effect）</p>
+</blockquote>
+<h3 id="43、"><a href="#43、" class="headerlink" title="43、"></a>43、</h3><p>婚姻不是简单的恋爱</p>
+<blockquote>
+<p>当我们刚坠入爱河时，我们的自我在扩展，事物都是新鲜的，亲密感在不断增加，激情就可能非常高亢。然而，一旦确立了婚姻关系，新奇感消失，激情逐渐消退；婚姻关系持续越久，激情就变得越少（Ahmetoglu et al.，2010）。</p>
+</blockquote>
+<h3 id="44、"><a href="#44、" class="headerlink" title="44、"></a>44、</h3><p>亲密和承诺才是爱情长久的因素</p>
+<blockquote>
+<p>通常，促使人们结婚的爱情和使人们数十年厮守在一起的爱情并不一样。随着我们变老，激情会消退，但亲密和承诺都会增强（Ahmetoglu et al.，2010）。因此，相伴之爱比浪漫之爱更为稳定（Sprecher &amp; Regan，1998）。</p>
+</blockquote>
+<h3 id="45、"><a href="#45、" class="headerlink" title="45、"></a>45、</h3><p>醉酒容易忘记危险，会忘记要带避孕套</p>
+<blockquote>
+<p>这种现象被称为酒精近视（alcohol myopia），指的是人们在醉酒后思考和加工信息的能力会降低（Giancola et al.，2010）。这种受限的能力意味着他们只能把注意力集中在最直接和最明显的环境线索。</p>
+</blockquote>
+<h3 id="46、"><a href="#46、" class="headerlink" title="46、"></a>46、</h3><p>性是爱的一种升华</p>
+<blockquote>
+<p>很显然，那些通过性行为以表达对伴侣的爱意、加深彼此的关系、给予和获得身体快感的人，比起那些因其他理由而发生性行为的人会更热切地追求（并享受）性互动（Cooper et al.，2008）。</p>
+</blockquote>
+<h3 id="47、"><a href="#47、" class="headerlink" title="47、"></a>47、</h3><p>门当户对</p>
+<blockquote>
+<p>大多数人都想得到最合意的伴侣，但如果他们真的拥有了完美的伴侣，却又会因为伴侣能得到更优秀的伴侣而感觉到威胁。</p>
+</blockquote>
+<h3 id="48、"><a href="#48、" class="headerlink" title="48、"></a>48、</h3><p>社交圈影响婚姻的稳定</p>
+<blockquote>
+<p>与许多有趣的男同事一起工作的女性比那些居家不上班的女性更容易离婚（McKinnish，2007）。</p>
+</blockquote>
+<h3 id="49、"><a href="#49、" class="headerlink" title="49、"></a>49、</h3><p>离婚不是说离就离，由长期的不满积累而成</p>
+<blockquote>
+<p>人们不会轻率地结束他们曾经承诺的亲密关系。比如，大多数离婚都有长期不满导致的诸多积怨，但伴侣也有彼此喜欢对方的地方；所以通常会发生矛盾的情感。</p>
+</blockquote>
+<h3 id="50、"><a href="#50、" class="headerlink" title="50、"></a>50、</h3><p>伴侣分手还会联系</p>
+<blockquote>
+<p>曾经的恋人在分手数月后，要么体验不到彼此关系的变化（通常是因为他们分得很彻底并且不再联系），要么他们会经历激烈的起伏变化，因为他们要努力弄明白伴侣在哪些方面适合自己的生活。</p>
+</blockquote>
+<h3 id="51、"><a href="#51、" class="headerlink" title="51、"></a>51、</h3><p>增加娱乐休闲活动有益于亲密关系</p>
+<blockquote>
+<p>在现实的世界里，那些热衷于徒步旅行、骑车、跳舞或者参加音乐会、演讲和演出的人，比那些只是待在家里看电视的人，认为他们的婚姻质量更高（Strong &amp; Aron，2006）。抽出时间进行富有创造性的玩乐有益于亲密关系。</p>
+</blockquote>
+<h3 id="52、"><a href="#52、" class="headerlink" title="52、"></a>52、</h3><p>成功的亲密关系</p>
+<blockquote>
+<p>当研究者要求100对婚龄持续了45年的满意夫妻解释他们成功的原因时（Lauer et al.，1990），他们的回答是：</p>
+<ul>
+<li><p>他们珍视婚姻，并认为婚姻是长期的承诺和忠诚；</p>
+</li>
+<li><p>幽默感非常有益于婚姻；</p>
+</li>
+<li><p>他们非常相似，在大部分事情上都能达成一致意见；</p>
+</li>
+<li><p>他们真正地喜欢自己的配偶，喜欢与配偶共度美好时光。</p>
+</li>
+</ul>
+<p>我们希望你的婚姻也能这样。</p>
+</blockquote>
+<h3 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h3><p>工作之后开始重新拾起了读书这个爱好，确切地说，是<strong>「读闲书」</strong>。因为我不想自己的思维太局限在工作相关的领域，所以想多读一些其他看似毫不相干的书。</p>
+<p>这本《亲密关系》是去年 12 月份被朋友推荐开始看的，利用上下班坐公交的通勤时间，断断续续地读完了，后半部分没有前半部分看的认真。</p>
+<p>简单总结就是：我觉得亲密关系是现代社会一个非常需要重视的话题，但实际上却很少有人会认真对待ta。因此推荐看，不仅是恋爱，还是婚姻，都需要成功的亲密关系。</p>
+]]></content>
+      <categories>
+        <category>Wonz书摘</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+        <tag>书摘</tag>
+        <tag>亲密关系</tag>
+        <tag>恋爱</tag>
+        <tag>婚姻</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Wonz现场 | 「迷城Ⅲ」2020 现场记录</title>
     <url>/2021/02/14/338-micheng/</url>
     <content><![CDATA[<blockquote>
