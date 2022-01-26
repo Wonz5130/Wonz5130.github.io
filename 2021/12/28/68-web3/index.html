@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/wonz.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wonz.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wonz.jpeg">
+  <link rel="mask-icon" href="/images/wonz.jpeg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="这是 Wonz 记录的 第 10 篇 笔记 文章：Intro to Web3 链接：https:&#x2F;&#x2F;www.odysseydao.com&#x2F;pathways&#x2F;intro-to-web3 本文是自己个人翻译 Odyssey 网站上关于 Web3 科普的文章。希望更多的人可以进入 Web3 的世界。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web3 入门学习笔记">
+<meta property="og:url" content="http://yoursite.com/2021/12/28/68-web3/index.html">
+<meta property="og:site_name" content="Wonz">
+<meta property="og:description" content="这是 Wonz 记录的 第 10 篇 笔记 文章：Intro to Web3 链接：https:&#x2F;&#x2F;www.odysseydao.com&#x2F;pathways&#x2F;intro-to-web3 本文是自己个人翻译 Odyssey 网站上关于 Web3 科普的文章。希望更多的人可以进入 Web3 的世界。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/61a4833999aa5e44bc20ca5d_03%20bitcoin.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619e8c6e3ab36fcb7d00f68c_Blockchain.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619e93d7cb686c3871b1a5ac_Ethereum.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619a9f8b7f423c8280dba598_https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F035b17a4-86a7-4678-9fd2-3d02129b4baf_1200x628.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619a9fb0b9c6ed10e995f964_https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4d7a0832-6267-4a7a-8e29-73bd6eefc24f_1200x628.png">
+<meta property="article:published_time" content="2021-12-27T16:27:28.000Z">
+<meta property="article:modified_time" content="2021-12-27T16:48:06.812Z">
+<meta property="article:author" content="Wonz">
+<meta property="article:tag" content="区块链">
+<meta property="article:tag" content="Web3">
+<meta property="article:tag" content="比特币">
+<meta property="article:tag" content="以太坊">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/61a4833999aa5e44bc20ca5d_03%20bitcoin.png">
+
+<link rel="canonical" href="http://yoursite.com/2021/12/28/68-web3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Web3 入门学习笔记 | Wonz</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/Wonz5130" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wonz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">最怕一生碌碌无为，还说平凡难能可贵。</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-live">
+
+    <a href="/live/" rel="section"><i class="fa fa-fw fa-music"></i>现场</a>
+
+  </li>
+        <li class="menu-item menu-item-project">
+
+    <a href="/project/" rel="section"><i class="fa fa-fw fa-desktop"></i>项目</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/28/68-web3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/wonz.jpeg">
+      <meta itemprop="name" content="Wonz">
+      <meta itemprop="description" content="Enjoy Coding! Enjoy Life!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wonz">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Web3 入门学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-28 00:27:28 / 修改时间：00:48:06" itemprop="dateCreated datePublished" datetime="2021-12-28T00:27:28+08:00">2021-12-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Wonz%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">Wonz笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>这是 Wonz 记录的 <strong>第 10 篇</strong> 笔记</p>
+<p>文章：Intro to Web3</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.odysseydao.com/pathways/intro-to-web3">https://www.odysseydao.com/pathways/intro-to-web3</a></p>
+<p>本文是自己个人翻译 Odyssey 网站上关于 Web3 科普的文章。希望更多的人可以进入 Web3 的世界。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/61a4833999aa5e44bc20ca5d_03%20bitcoin.png" alt="61a4833999aa5e44bc20ca5d_03 bitcoin"></p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="一、什么是-Web3"><a href="#一、什么是-Web3" class="headerlink" title="一、什么是 Web3"></a>一、什么是 Web3</h1><p>Web3 之所以很重要是因为我们正在建立一个由人们自己而不是中间人（例如大型互联网公司）拥有的互联网。</p>
+<h2 id="Web1-Web2-Web3"><a href="#Web1-Web2-Web3" class="headerlink" title="Web1, Web2, Web3"></a>Web1, Web2, Web3</h2><blockquote>
+<p>正如 Eshita 简洁地写道：</p>
+<ul>
+<li>Web1: Read</li>
+<li>Web2: Read, write</li>
+<li>Web3: Read, write, own</li>
+</ul>
+</blockquote>
+<p>Web1（1990 年至 2000 年代初）是只读的。Web1 是建立在像 HTML 这样的开源协议之上的。</p>
+<p>Web2（2000 年代初至今）是可读可写的。Web2 是建立在客户端-服务器即 C/S 结构上的，其中用户是客户端，公司控制服务器。</p>
+<p>Web3（2020+）是读取、写入和拥有的。Web3 是建立在计算机的点对点网络上的，这些计算机无需中间人即可相互通信。</p>
+<p>![619e8894c81ca21ef156258b_Web 2 vs. web 3](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619e8894c81ca21ef156258b_Web">https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619e8894c81ca21ef156258b_Web</a> 2 vs. web 3.png)</p>
+<h2 id="什么是-token"><a href="#什么是-token" class="headerlink" title="什么是 token"></a>什么是 token</h2><p>token 是资产所有权的记录。</p>
+<p>token 可以是可替代的或不可替代的：</p>
+<ul>
+<li>可替代的 token 是可以互换的（例如，美元、比特币）。</li>
+<li>不可替代的 token (NFT) 是独一无二的（例如，一件艺术品）。</li>
+</ul>
+<h1 id="二、什么是区块链"><a href="#二、什么是区块链" class="headerlink" title="二、什么是区块链"></a>二、什么是区块链</h1><p>区块链是存储在计算机网络上的交易链表。</p>
+<p>区块链的特点：</p>
+<ul>
+<li>去中心化：交易在计算机（节点）网络上进行。</li>
+<li>不可变：交易一旦提交就不能更改。</li>
+<li>公开：任何人都可以查看交易。</li>
+</ul>
+<h2 id="区块链是如何工作的"><a href="#区块链是如何工作的" class="headerlink" title="区块链是如何工作的"></a>区块链是如何工作的</h2><p>每个区块都有：</p>
+<ol>
+<li>一份交易清单</li>
+<li>一个区块的哈希值（一长串随机字符）</li>
+<li>前一个区块的哈希值（这是区块如何链接的原因）</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619e8c6e3ab36fcb7d00f68c_Blockchain.png" alt="619e8c6e3ab36fcb7d00f68c_Blockchain"></p>
+<h2 id="共识机制"><a href="#共识机制" class="headerlink" title="共识机制"></a>共识机制</h2><p>为了在没有中间人的情况下处理交易，节点需要能够自己达成共识。主要有两种方法：</p>
+<p>![619e8d156689c4e24716206a_Consensus mechanisms](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619e8d156689c4e24716206a_Consensus">https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619e8d156689c4e24716206a_Consensus</a> mechanisms.png)</p>
+<h3 id="Proof-of-Work（POW算法）"><a href="#Proof-of-Work（POW算法）" class="headerlink" title="Proof of Work（POW算法）"></a>Proof of Work（POW算法）</h3><ol>
+<li>被称为矿工的节点竞争使用暴力算法（例如掷数千次骰子以获得正确的数字）解决数学问题。</li>
+<li>第一个解决问题的矿工可以创建一个区块。</li>
+<li>其他节点检查该区块是否有效。如果是，则矿工将获得加密货币奖励。如果不是，矿工就浪费了他们的时间和精力。</li>
+<li>所有节点都将新区块添加到其区块链的副本中。</li>
+</ol>
+<p>工作量证明机制比较消耗资源。因为矿工们通过构建可以 24h*7 运行的强大机器来竞争解决数学问题。</p>
+<h3 id="Proof-of-Stake（POS算法）"><a href="#Proof-of-Stake（POS算法）" class="headerlink" title="Proof of Stake（POS算法）"></a>Proof of Stake（POS算法）</h3><ol>
+<li>称为验证器的节点持有一些加密货币。stake 就像在说：“我将投入这么多的加密货币来赢得进行这笔交易的权利。”</li>
+<li>拥有更多 stake 的验证者更有可能（但不能保证）被选中来处理交易并创建一个区块。</li>
+<li>其他验证器检查区块是否有效。如果是，所有参与的验证者都会获得交易费。如果不是，创建区块的验证者可能会失去其 stake。</li>
+<li>所有节点都将新区块添加到其区块链的副本中。</li>
+</ol>
+<p>POS 算法比 POW 算法使用更少的资源。比特币使用 POW 算法，而以太坊目前正在从 POW 算法过渡到 POS 算法。</p>
+<h2 id="区块链的三难困境"><a href="#区块链的三难困境" class="headerlink" title="区块链的三难困境"></a>区块链的三难困境</h2><p>当谈到区块链时，重要的是要记住安全性、去中心化和可扩展性之间通常需要权衡：</p>
+<ol>
+<li>安全性：能够抵御错误和攻击。</li>
+<li>去中心化：能够支持许多节点。</li>
+<li>可扩展性：能够支持大量交易。</li>
+</ol>
+<h1 id="三、什么是比特币"><a href="#三、什么是比特币" class="headerlink" title="三、什么是比特币"></a>三、什么是比特币</h1><blockquote>
+<p>比特币由中本聪于 2009 年创建，旨在成为“点对点电子现金系统”。 </p>
+</blockquote>
+<h2 id="比特币是如何工作的"><a href="#比特币是如何工作的" class="headerlink" title="比特币是如何工作的"></a>比特币是如何工作的</h2><p>比特币使用区块链，因此是去中心化的、不可变的和公开的。它也是：</p>
+<ul>
+<li>限量：永远只会有 2100 万个比特币。</li>
+<li>单一用途：许多持有者只是希望它成为一个存储价值的 token。</li>
+</ul>
+<p>比特币可以说是所有加密货币中最安全和去中心化的。但是，它每秒只能支持 3-7 个交易。这对于其存储价值的主要用途来说已经足够了，但是像 Stacks 和 Lightning 这样的项目正在努力让比特币做更多的事情。</p>
+<h2 id="比特币简史"><a href="#比特币简史" class="headerlink" title="比特币简史"></a>比特币简史</h2><ul>
+<li>2008 年：一个名为 Satoshi Nakamoto 中本聪的个人或团体发布了一份白皮书，其中概述了“完全点对点的新电子现金系统，没有受信任的第三方”的计划。</li>
+<li>2009 年：挖出第一个比特币。</li>
+<li>2010 年：一位名叫 Laszlo Hanyecz 的程序员进行了第一笔比特币交易，用 10,000 个比特币（现在价值 6 亿美元以上）购买了两个 Papa John 披萨。</li>
+<li>2013 年：比特币经历了几次争议，包括 Mt. Gox 交易所倒闭和从 Silk Road（黑市）没收 26,000 个比特币。</li>
+<li>2017 年：Bitcoin Cash 比特币现金被创建为具有更大区块大小的比特币分支，以实现更快的点对点交易。</li>
+<li>2021 年：萨尔瓦多成为第一个采用比特币作为法定货币的国家。</li>
+</ul>
+<h1 id="四、什么是以太坊"><a href="#四、什么是以太坊" class="headerlink" title="四、什么是以太坊"></a>四、什么是以太坊</h1><blockquote>
+<p>以太坊由 Vitalik Buterin 于 2013 年创建，旨在让任何人“编写智能合约和去中心化应用程序（dapps）”。 </p>
+</blockquote>
+<h2 id="以太坊是如何工作的"><a href="#以太坊是如何工作的" class="headerlink" title="以太坊是如何工作的"></a>以太坊是如何工作的</h2><p>像比特币一样，它建立在区块链之上，是去中心化的、不可变的和开放的。</p>
+<p>与比特币不同，以太坊的目标是成为世界上的去中心化计算机（称为 EVM 或以太坊虚拟机）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619e93d7cb686c3871b1a5ac_Ethereum.png" alt="619e93d7cb686c3871b1a5ac_Ethereum"></p>
+<ol>
+<li><strong>Ether</strong> 是以太坊的数字 token。主要目的是奖励以太坊区块链上进行处理交易的节点。</li>
+<li><strong>Gas</strong> 是向节点付费以处理交易的 Ether 数量。</li>
+<li><strong>Smart contracts</strong> 智能合约是在以太坊区块链上运行的代码。 此代码是去中心化、不可变以及公开的。</li>
+<li><strong>Decentralized apps (dapp)</strong> 将后端智能合约与前端 UI 相结合。</li>
+</ol>
+<h2 id="Layer-2-网络和侧链"><a href="#Layer-2-网络和侧链" class="headerlink" title="Layer 2 网络和侧链"></a>Layer 2 网络和侧链</h2><p>降低 gas 费用的另一种方法是使用 layer 2 网络或侧链：</p>
+<ol>
+<li><strong>Layer 1 网络</strong> 是主要的以太坊区块链。</li>
+<li><strong>Layer 2 网络</strong> 在绑定并将其提交给以太坊区块链之前处理交易下链。它们从以太坊的安全和分布式网络中受益。Arbitrum 是 layer 2 网络的一个例子。</li>
+<li><strong>侧链</strong> 是使用自己的 token 来支付 gas 的独立区块链。 你可以通过 bridge 在侧链和以太坊之间移动 tokens。Polygon 是侧链的一个例子。</li>
+</ol>
+<h2 id="以太坊简史"><a href="#以太坊简史" class="headerlink" title="以太坊简史"></a>以太坊简史</h2><ul>
+<li>2013年：Vitalik Buterin发表了以太坊白皮书。未能说服比特币社区以支持比特币上的去中心化 apps，Vitalik 众筹了以太坊作为一个新的加密货币。</li>
+<li>2014-2015：Ether 正式继续销售，人们可以用比特币购买它。</li>
+<li>2016年：DAO 提高 150 万美元，为组织公司提供新的去中心化商业模式。不幸的是，黑客能够利用漏洞来窃取DAO 1/3 的资金。这导致了以太坊做艰难的努力来恢复失去的资金。</li>
+<li>2020年：以太坊将 beacon chain 作为其 eth 2.0 计划，从 POW 算法迁移到 POS 算法。基金会计划将在2022年的某个时候合并以太坊的链。</li>
+</ul>
+<h1 id="五、为什么投资加密行业"><a href="#五、为什么投资加密行业" class="headerlink" title="五、为什么投资加密行业"></a>五、为什么投资加密行业</h1><h2 id="为什么拥有加密货币"><a href="#为什么拥有加密货币" class="headerlink" title="为什么拥有加密货币"></a>为什么拥有加密货币</h2><h3 id="长期来看加密货币是一个很好的投资"><a href="#长期来看加密货币是一个很好的投资" class="headerlink" title="长期来看加密货币是一个很好的投资"></a>长期来看加密货币是一个很好的投资</h3><p>比特币是过去十年的表现最好的资产：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619a9f8b7f423c8280dba598_https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F035b17a4-86a7-4678-9fd2-3d02129b4baf_1200x628.png" alt="619a9f8b7f423c8280dba598_https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F035b17a4-86a7-4678-9fd2-3d02129b4baf_1200x628"></p>
+<h3 id="加密货币是对金融体系的对冲"><a href="#加密货币是对金融体系的对冲" class="headerlink" title="加密货币是对金融体系的对冲"></a>加密货币是对金融体系的对冲</h3><p>传统的金融系统有几个缺点：</p>
+<ol>
+<li>通货膨胀是一个真正的风险。</li>
+<li>银行可能不会把你的最佳利益放在心上。</li>
+<li>不是每个人都有银行账户。</li>
+</ol>
+<h3 id="加密货币被需要把这些事情完成"><a href="#加密货币被需要把这些事情完成" class="headerlink" title="加密货币被需要把这些事情完成"></a>加密货币被需要把这些事情完成</h3><p>你可以使用加密货币：</p>
+<ol>
+<li>用最小的费用向世界上任何人汇款。</li>
+<li>购买越来越多的商品和服务。</li>
+<li>构建和使用可让人们支持创作者，参加社区，玩游戏等的去中心化 apps。</li>
+</ol>
+<h2 id="买什么加密货币"><a href="#买什么加密货币" class="headerlink" title="买什么加密货币"></a>买什么加密货币</h2><p>全球加密货币市值为 $2.7T（2021年11月）。头部是：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619a9fb0b9c6ed10e995f964_https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4d7a0832-6267-4a7a-8e29-73bd6eefc24f_1200x628.png" alt="619a9fb0b9c6ed10e995f964_https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4d7a0832-6267-4a7a-8e29-73bd6eefc24f_1200x628"></p>
+<p>不在这里提供投资建议，但在选择加密货币购买有几个提示：</p>
+<ol>
+<li>只投入你可以长期（例如，几年）持有的。</li>
+<li>大多数人首先投资比特币或以太坊。</li>
+<li>可以购买分数股份（例如，0.01比特币）。</li>
+<li>考虑因为价格波动使用平均成本法（Dollar-cost averaging 简写为 DCA）或限制购买。</li>
+<li>要小心选择一个新的加密货币。它能涨得很快，也能跌得很快。</li>
+</ol>
+<h2 id="在哪里购买加密货币"><a href="#在哪里购买加密货币" class="headerlink" title="在哪里购买加密货币"></a>在哪里购买加密货币</h2><p>大多数人通过交易所购买加密货币。选择一个交易所需要考虑：</p>
+<ol>
+<li>安全性：2FA，离线资产存储和资产的保险。</li>
+<li>流动性：让你更快地完成交易。</li>
+<li>费用：低交易、提款和存款费用。</li>
+<li>用户体验：在 Web 和 Mobile 上寻找易于使用的 UX。</li>
+<li>用户支持：口碑好的。</li>
+<li>加密货币选择：要持有的硬币。</li>
+<li>区域可用性：你所在州或国家/地区可用的。</li>
+</ol>
+<p>如果你刚开始接触，我们建议你从中心化交易所开始。它们很容易使用，而无需担心管理你的钱包 keys。</p>
+<h2 id="购买加密货币的小提示"><a href="#购买加密货币的小提示" class="headerlink" title="购买加密货币的小提示"></a>购买加密货币的小提示</h2><p>以下是在交易所中购买加密货币的提示：</p>
+<ol>
+<li>打开安全功能：启用 2FA 和白名单提款地址。警惕企图伪装成交易所的网络钓鱼诈骗者。</li>
+<li>考虑 Pro 版本：像 Coinbase 这样的交易所提供了一个专业版，看起来对初学者不友好，但提供较低的交易费用和高级交易选项，如限制购买。</li>
+<li>使用美元成本平均：平均成本法 DCA 是你投资相同金额的策略，以平仓加密价格的波动。</li>
+<li>在多个交换所上跟踪你的投资组合和税收：使用像CoinTracker 这样的平台，在一个地方查看你的所有加密钱包。</li>
+</ol>
+<h1 id="六、如何建立钱包"><a href="#六、如何建立钱包" class="headerlink" title="六、如何建立钱包"></a>六、如何建立钱包</h1><h2 id="加密钱包是如何工作的"><a href="#加密钱包是如何工作的" class="headerlink" title="加密钱包是如何工作的"></a>加密钱包是如何工作的</h2><p>加密钱包储存两个 keys：</p>
+<ol>
+<li><strong>公钥</strong>链接到一个允许你提供交易的地址。</li>
+<li><strong>私钥</strong>证明你拥有你地址上的资产。</li>
+<li><strong>助记词</strong>是12-24个单词，可以让你得到你的私钥。</li>
+</ol>
+<p>![619ea997469a1944145da642_Wallet artifacts](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619ea997469a1944145da642_Wallet">https://cdn.jsdelivr.net/gh/Wonz5130/My-Private-ImgHost/img/619ea997469a1944145da642_Wallet</a> artifacts.png)</p>
+<p>在 Web3，你的资产在区块链上，相当于在银行。请记住：</p>
+<ol>
+<li>你可以与其他人共享你的公钥进行交易。</li>
+<li>你必须永远不会与任何人分享你的私钥或助记词。</li>
+</ol>
+<h2 id="使用哪个钱包"><a href="#使用哪个钱包" class="headerlink" title="使用哪个钱包"></a>使用哪个钱包</h2><p>加密钱包可以分为热钱包和冷钱包。建议是：</p>
+<p>从热钱包开始，然后将你的长期资产移动到冷钱包。</p>
+<h3 id="1-开始使用热钱包"><a href="#1-开始使用热钱包" class="headerlink" title="1. 开始使用热钱包"></a>1. 开始使用热钱包</h3><p>热钱包更方便但没有冷钱包安全。有两种类型的热钱包：</p>
+<ul>
+<li>托管钱包由交易所（例如Coinbase）进行管理，你可以使用用户名和密码登录的。使用托管钱包，你不拥有 keys。事实上，大多数人使用交易所但是没有意识到他们有一个钱包。</li>
+<li>非托管钱包是自我管理的。因为你拥有 keys，你可以将这些钱包用作 Web3 身份。受欢迎的非托管钱包包括 MetaMask，Rainbow 和 Coinbase 钱包。</li>
+</ul>
+<h3 id="2-将长期资产转移到冷钱包"><a href="#2-将长期资产转移到冷钱包" class="headerlink" title="2. 将长期资产转移到冷钱包"></a>2. 将长期资产转移到冷钱包</h3><p>冷钱包是默认离线且更安全的硬件设备。</p>
+<p>如果你有近期不想交易的资产，请将它们转移到像 Trezor 和 Ledger 等的冷钱包中。购买冷钱包（60-150 美元）的成本对于保护你的长期资产来说是值得的。</p>
+<h2 id="如何将加密货币发送到钱包"><a href="#如何将加密货币发送到钱包" class="headerlink" title="如何将加密货币发送到钱包"></a>如何将加密货币发送到钱包</h2><h3 id="1-将以太坊转移到你的钱包"><a href="#1-将以太坊转移到你的钱包" class="headerlink" title="1. 将以太坊转移到你的钱包"></a>1. 将以太坊转移到你的钱包</h3><ol>
+<li>登录交易所</li>
+<li>导航到从交易所提币页面</li>
+<li>选择 ETH 和你要提取的金额</li>
+<li>复制并粘贴你公共钱包地址</li>
+<li>确认交易</li>
+</ol>
+<p>你的 ETH 可能需要几分钟才能出现在你的钱包中。到达那里后，请按照以下步骤将你的钱包连接到领先的 NFT 市场 OpenSea。</p>
+<h3 id="2-将你的钱包连接到-OpenSea"><a href="#2-将你的钱包连接到-OpenSea" class="headerlink" title="2. 将你的钱包连接到 OpenSea"></a>2. 将你的钱包连接到 OpenSea</h3><ol>
+<li>在 Web 上访问 OpenSea 并单击个人资料按钮</li>
+<li>选择你的钱包并在出现提示时建立连接</li>
+<li>一旦你连接你的钱包，你就可以使用你的 ETH 购买 NFT</li>
+</ol>
+<h1 id="七、如何避免上当受骗"><a href="#七、如何避免上当受骗" class="headerlink" title="七、如何避免上当受骗"></a>七、如何避免上当受骗</h1><h2 id="保护钱包的小提示"><a href="#保护钱包的小提示" class="headerlink" title="保护钱包的小提示"></a>保护钱包的小提示</h2><ol>
+<li>将你的私钥和助记词存储在安全的地方。如果你必须在线存储这些信息，请使用 1Password 之类的密码管理器。</li>
+<li>切勿与任何人分享你的私钥或助记词。</li>
+<li>保护你的钱包密码。如果你的钱包有一个单独的密码，任何拥有它的人都可以得到你的私钥。选择一个安全的密码并开启 2FA。</li>
+<li>将长期资产从你的日常热钱包中移出，将它们放入冷钱包或另一个热钱包。</li>
+<li>在采取任何行动之前，请检查网站 URL、电子邮件或社交媒体。诈骗者会伪装成一个值得信赖的平台来钓鱼窃取你的助记词。</li>
+<li>关闭 Discord DMs，不要与钱包中的未知资产互动。这是诈骗者使用的两种常见攻击手段。</li>
+</ol>
+<h2 id="常见的加密资产诈骗"><a href="#常见的加密资产诈骗" class="headerlink" title="常见的加密资产诈骗"></a>常见的加密资产诈骗</h2><p>以下是一系列骗局和避免它们的提示：</p>
+<ul>
+<li>假的客户支持：例如，“Your Metamask account has been hacked.”</li>
+<li>假 NFT 或 token：例如，“We’re giving you a free NFT for your loyalty to the community.” 或者 “You have $182K in akSwap.io in your wallet.”</li>
+<li>假冷钱包：例如，“Replace your Ledger to secure your funds.”</li>
+</ul>
+<h1 id="八、如何获得一个-ens-域名"><a href="#八、如何获得一个-ens-域名" class="headerlink" title="八、如何获得一个 ens 域名"></a>八、如何获得一个 ens 域名</h1><p>回想一下，你钱包的公钥允许人们向你发送资产（例如 NFT）。不幸的是，这是一个很难记住的长字符串（例如，0xa5d1b…）。</p>
+<p>让我们这样做，以便人们可以将资产发送到 yourname.eth：</p>
+<ol>
+<li>转到 ens.domains 并连接你的钱包</li>
+<li>搜索 yourname.eth 或任何你想调用你的钱包地址的东西</li>
+<li>如果地址可用，请选择注册期限并单击“请求”。 交易将花费少量的 eth。</li>
+</ol>
+<p>交易确认后，你应该拥有一个人们可以向其发送加密资产的 eth 域名。你可以通过以下方式确认你现在拥有该域名：</p>
+<ol>
+<li>在像 Rainbow 这样的钱包里找</li>
+<li>在 Etherscan 上输入以查看它是否与你公共钱包地址匹配</li>
+</ol>
+<p>P.S. 鉴于本人才疏学浅，如有翻译得不正确的地方，还请指教。点击左下角<strong>「阅读原文」</strong>，可以查看 Odyssey Web3 的相关原文。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag"><i class="fa fa-tag"></i> 区块链</a>
+              <a href="/tags/Web3/" rel="tag"><i class="fa fa-tag"></i> Web3</a>
+              <a href="/tags/%E6%AF%94%E7%89%B9%E5%B8%81/" rel="tag"><i class="fa fa-tag"></i> 比特币</a>
+              <a href="/tags/%E4%BB%A5%E5%A4%AA%E5%9D%8A/" rel="tag"><i class="fa fa-tag"></i> 以太坊</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/25/67-the-nature-of-business-and-the-internet/" rel="prev" title="《商业的本质和互联网》书摘记录">
+      <i class="fa fa-chevron-left"></i> 《商业的本质和互联网》书摘记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/02/69-2021-favorites/" rel="next" title="2021 年一些喜欢的东西">
+      2021 年一些喜欢的东西 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF-Web3"><span class="nav-text">一、什么是 Web3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web1-Web2-Web3"><span class="nav-text">Web1, Web2, Web3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-token"><span class="nav-text">什么是 token</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%8C%BA%E5%9D%97%E9%93%BE"><span class="nav-text">二、什么是区块链</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="nav-text">区块链是如何工作的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B1%E8%AF%86%E6%9C%BA%E5%88%B6"><span class="nav-text">共识机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Proof-of-Work%EF%BC%88POW%E7%AE%97%E6%B3%95%EF%BC%89"><span class="nav-text">Proof of Work（POW算法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Proof-of-Stake%EF%BC%88POS%E7%AE%97%E6%B3%95%EF%BC%89"><span class="nav-text">Proof of Stake（POS算法）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E4%B8%89%E9%9A%BE%E5%9B%B0%E5%A2%83"><span class="nav-text">区块链的三难困境</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E6%AF%94%E7%89%B9%E5%B8%81"><span class="nav-text">三、什么是比特币</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E7%89%B9%E5%B8%81%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="nav-text">比特币是如何工作的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E7%89%B9%E5%B8%81%E7%AE%80%E5%8F%B2"><span class="nav-text">比特币简史</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E4%BB%A5%E5%A4%AA%E5%9D%8A"><span class="nav-text">四、什么是以太坊</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="nav-text">以太坊是如何工作的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layer-2-%E7%BD%91%E7%BB%9C%E5%92%8C%E4%BE%A7%E9%93%BE"><span class="nav-text">Layer 2 网络和侧链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%AE%80%E5%8F%B2"><span class="nav-text">以太坊简史</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%95%E8%B5%84%E5%8A%A0%E5%AF%86%E8%A1%8C%E4%B8%9A"><span class="nav-text">五、为什么投资加密行业</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8B%A5%E6%9C%89%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81"><span class="nav-text">为什么拥有加密货币</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%95%BF%E6%9C%9F%E6%9D%A5%E7%9C%8B%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81%E6%98%AF%E4%B8%80%E4%B8%AA%E5%BE%88%E5%A5%BD%E7%9A%84%E6%8A%95%E8%B5%84"><span class="nav-text">长期来看加密货币是一个很好的投资</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81%E6%98%AF%E5%AF%B9%E9%87%91%E8%9E%8D%E4%BD%93%E7%B3%BB%E7%9A%84%E5%AF%B9%E5%86%B2"><span class="nav-text">加密货币是对金融体系的对冲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81%E8%A2%AB%E9%9C%80%E8%A6%81%E6%8A%8A%E8%BF%99%E4%BA%9B%E4%BA%8B%E6%83%85%E5%AE%8C%E6%88%90"><span class="nav-text">加密货币被需要把这些事情完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%B0%E4%BB%80%E4%B9%88%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81"><span class="nav-text">买什么加密货币</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%93%AA%E9%87%8C%E8%B4%AD%E4%B9%B0%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81"><span class="nav-text">在哪里购买加密货币</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AD%E4%B9%B0%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81%E7%9A%84%E5%B0%8F%E6%8F%90%E7%A4%BA"><span class="nav-text">购买加密货币的小提示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8B%E9%92%B1%E5%8C%85"><span class="nav-text">六、如何建立钱包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E9%92%B1%E5%8C%85%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="nav-text">加密钱包是如何工作的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%93%AA%E4%B8%AA%E9%92%B1%E5%8C%85"><span class="nav-text">使用哪个钱包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8%E7%83%AD%E9%92%B1%E5%8C%85"><span class="nav-text">1. 开始使用热钱包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B0%86%E9%95%BF%E6%9C%9F%E8%B5%84%E4%BA%A7%E8%BD%AC%E7%A7%BB%E5%88%B0%E5%86%B7%E9%92%B1%E5%8C%85"><span class="nav-text">2. 将长期资产转移到冷钱包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%B0%86%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81%E5%8F%91%E9%80%81%E5%88%B0%E9%92%B1%E5%8C%85"><span class="nav-text">如何将加密货币发送到钱包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%B0%86%E4%BB%A5%E5%A4%AA%E5%9D%8A%E8%BD%AC%E7%A7%BB%E5%88%B0%E4%BD%A0%E7%9A%84%E9%92%B1%E5%8C%85"><span class="nav-text">1. 将以太坊转移到你的钱包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B0%86%E4%BD%A0%E7%9A%84%E9%92%B1%E5%8C%85%E8%BF%9E%E6%8E%A5%E5%88%B0-OpenSea"><span class="nav-text">2. 将你的钱包连接到 OpenSea</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%B8%8A%E5%BD%93%E5%8F%97%E9%AA%97"><span class="nav-text">七、如何避免上当受骗</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%9D%E6%8A%A4%E9%92%B1%E5%8C%85%E7%9A%84%E5%B0%8F%E6%8F%90%E7%A4%BA"><span class="nav-text">保护钱包的小提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8A%A0%E5%AF%86%E8%B5%84%E4%BA%A7%E8%AF%88%E9%AA%97"><span class="nav-text">常见的加密资产诈骗</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E4%B8%80%E4%B8%AA-ens-%E5%9F%9F%E5%90%8D"><span class="nav-text">八、如何获得一个 ens 域名</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wonz"
+      src="/images/wonz.jpeg">
+  <p class="site-author-name" itemprop="name">Wonz</p>
+  <div class="site-description" itemprop="description">Enjoy Coding! Enjoy Life!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">128</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Wonz5130" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Wonz5130" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wonzwang.blog.csdn.net/" title="CSDN → https:&#x2F;&#x2F;wonzwang.blog.csdn.net" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wonz.wang@outlook.com" title="Outlook → mailto:wonz.wang@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>Outlook</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://500px.me/wonz" title="500px → https:&#x2F;&#x2F;500px.me&#x2F;wonz" rel="noopener" target="_blank"><i class="fa fa-fw fa-camera"></i>500px</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/wonz_wang" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;wonz_wang" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wonz-wang.tuchong.com/" title="图虫 → https:&#x2F;&#x2F;wonz-wang.tuchong.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-camera-retro"></i>图虫</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/faadf622beb4" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;faadf622beb4" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wonzwang" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wonzwang" rel="noopener" target="_blank"><i class="fa fa-fw fa-bookmark"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wonz.hedwig.pub/" title="Newsletter → https:&#x2F;&#x2F;wonz.hedwig.pub" rel="noopener" target="_blank"><i class="fa fa-fw fa-clipboard"></i>Newsletter</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友链（欢迎自荐）
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://idealclover.top/" title="https:&#x2F;&#x2F;idealclover.top" rel="noopener" target="_blank">翠翠的个人网站</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.zetary.com/" title="http:&#x2F;&#x2F;www.zetary.com&#x2F;" rel="noopener" target="_blank">Zetary的个人网站</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://masuit.com/" title="https:&#x2F;&#x2F;masuit.com&#x2F;" rel="noopener" target="_blank">懒得勤快的个人网站</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/tc_to_top/" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;tc_to_top&#x2F;" rel="noopener" target="_blank">前 ACM 校队队长的博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.liuchuo.net/" title="https:&#x2F;&#x2F;www.liuchuo.net&#x2F;" rel="noopener" target="_blank">厉害又萌萌的 「柳婼学姐」的博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/fengsigaoju/" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;fengsigaoju&#x2F;" rel="noopener" target="_blank">去了阿里的人超好的 「宋学长」的博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/qq_37360631" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_37360631" rel="noopener" target="_blank">老王的博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.izgq.net/" title="https:&#x2F;&#x2F;blog.izgq.net&#x2F;" rel="noopener" target="_blank">ZGQ's Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://wonz.wang/" title="http:&#x2F;&#x2F;wonz.wang&#x2F;" rel="noopener" target="_blank">------------挖坑待填------------</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://wonz.wang/" title="http:&#x2F;&#x2F;wonz.wang&#x2F;" rel="noopener" target="_blank">我的摄影作品</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://wonz.wang/" title="http:&#x2F;&#x2F;wonz.wang&#x2F;" rel="noopener" target="_blank">我的观影记录</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://wonz.wang/" title="http:&#x2F;&#x2F;wonz.wang&#x2F;" rel="noopener" target="_blank">我的旅行笔记</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://wonz.wang/" title="http:&#x2F;&#x2F;wonz.wang&#x2F;" rel="noopener" target="_blank">--------------END--------------</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+<span id="busuanzi_container_site_pv""><i class="fa fa-spinner"></i> 本站总访问量 <span id="busuanzi_value_site_pv"></span> 次 | 
+<span id="busuanzi_container_site_uv""><i class="fa fa-user-md"></i> 本站总访客数 <span id="busuanzi_value_site_uv"></span> 人
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wonz</span>
+
+<!--
+</div>
+-->
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.4.0
+  </div>
+-->
+
+<!--
+  <span class="post-meta-divider">|</span>
+-->
+
+<!--
+  <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+-->
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='130,130,130' opacity='0.5' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="dist/canvas-nest.js"></script>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/love-click.js"></script>
+
+</body>
+</html>
