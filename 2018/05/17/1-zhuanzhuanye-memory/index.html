@@ -55,15 +55,15 @@
 <meta property="og:site_name" content="Wonz">
 <meta property="og:description" content="2018.5.15—2018.5.16 为期两天的转专业考试终于结束了，心里的一块大石头终于落地了。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/Wonz5130/My-Private-ImgHost/blob/master/img/1.png">
-<meta property="og:image" content="https://github.com/Wonz5130/My-Private-ImgHost/blob/master/img/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Wonz5130/My-Private-ImgHost/master/img/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Wonz5130/My-Private-ImgHost/master/img/2.png">
 <meta property="article:published_time" content="2018-05-16T16:36:49.000Z">
-<meta property="article:modified_time" content="2022-05-21T10:16:48.783Z">
+<meta property="article:modified_time" content="2022-06-04T07:47:57.241Z">
 <meta property="article:author" content="Wonz">
 <meta property="article:tag" content="NJUPT">
 <meta property="article:tag" content="转专业">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/Wonz5130/My-Private-ImgHost/blob/master/img/1.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Wonz5130/My-Private-ImgHost/master/img/1.png">
 
 <link rel="canonical" href="http://yoursite.com/2018/05/17/1-zhuanzhuanye-memory/">
 
@@ -258,7 +258,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-21 18:16:48" itemprop="dateModified" datetime="2022-05-21T18:16:48+08:00">2022-05-21</time>
+                <time title="修改时间：2022-06-04 15:47:57" itemprop="dateModified" datetime="2022-06-04T15:47:57+08:00">2022-06-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -291,9 +291,9 @@
 
 <p>先说说 5.15 的笔试。</p>
 <p>笔试考的是数据结构 B。一开始做感觉不是很难。不过中间做到一道简答题的第二小问：求一个森林 (含有三棵树) 的先序遍历，脑子一抽把原来的答案改掉了，改成了三棵子树同时进行先序遍历。森林如下图所示：</p>
-<p><img src="https://github.com/Wonz5130/My-Private-ImgHost/blob/master/img/1.png"></p>
+<p><img src="https://raw.githubusercontent.com/Wonz5130/My-Private-ImgHost/master/img/1.png"></p>
 <p>第一小问是转化成二叉树： </p>
-<p><img src="https://github.com/Wonz5130/My-Private-ImgHost/blob/master/img/2.png"></p>
+<p><img src="https://raw.githubusercontent.com/Wonz5130/My-Private-ImgHost/master/img/2.png"></p>
 <p>第二小问就是求这个<strong>森林</strong>的<strong>先序遍历</strong>。本来想都没想写的：<strong>ADBEC</strong>。后来真的是脑子抽了，改成了 <strong>ABCDE</strong>。因为想起了之前做到的一道题，森林的层次遍历就是三棵子树同时进行遍历的，这里先序遍历我想当然以为也是这样。后来一直没改，考完上网查了一下，翻书又确认了一遍，发现错了。求森林的先序遍历就是求<strong>对应二叉树的先序遍历</strong>啊！怪我基础知识掌握的不扎实。大概扣了 2-4 分。</p>
 <p>还有一道选择题不确定：求高度为 2 的 5 阶 B - 树最少的关键字个数。一开始我是不会做的，后来就从” 最小 “出发。B - 树每个结点<strong>最少</strong>有 ceil[m/2]-1 个元素。但是这有一个前提！那就是<strong>除根和失败结点以外</strong>！我又想当然的以为根结点也是，结果就以为根结点是 2 个关键字，下面有三个子树，2<em>3+2=8 个。但是根结点时可以<strong>最少只有一个关键字</strong>的！所以答案应该是 1+2</em>2=5！又两分没了。</p>
 <p>其他感觉还行，比较难的知识点，比如：双向链表，稀疏矩阵，二叉平衡树的插入，B - 树的插入、删除，迪杰斯特拉算法，快排，构建最小堆，都没有考到。最后两个算法设计题，第一道是计算一棵二叉树中关键字等于 x 的结点个数。第二道是简单选择排序算法。</p>
